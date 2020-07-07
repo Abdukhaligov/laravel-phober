@@ -2,13 +2,18 @@
 
 namespace App\Providers;
 
+use App\Models\Role;
+use App\Models\User;
+use App\Policies\RolePolicy;
+use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider {
   protected $policies = [
-      'App\Model' => 'App\Policies\ModelPolicy',
+      Role::class => RolePolicy::class,
+      User::class => UserPolicy::class
   ];
 
   public function boot() {
