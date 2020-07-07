@@ -17,6 +17,12 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            <hr>
+            <passport-clients></passport-clients>
+            <hr>
+            <passport-authorized-clients></passport-authorized-clients>
+            <hr>
+            <passport-personal-access-tokens></passport-personal-access-tokens>
         </div>
     </div>
 </div>
