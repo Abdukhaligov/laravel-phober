@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.19.0 on 2020-07-07 21:20:41.
+ * Generated for Laravel 7.19.0 on 2020-07-07 21:41:08.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -16215,6 +16215,18 @@ namespace Facade\Ignition\Facades {
  
 }
 
+namespace Laravel\Nova { 
+
+    /**
+     * 
+     *
+     */ 
+    class Nova {
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -19167,6 +19179,8 @@ namespace  {
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
     class Flare extends \Facade\Ignition\Facades\Flare {}
+
+    class Nova extends \Laravel\Nova\Nova {}
  
 }
 
