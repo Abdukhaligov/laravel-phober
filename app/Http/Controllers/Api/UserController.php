@@ -10,13 +10,15 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
-  public function login() {
-    if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
+  public function login(Request $request) {
+    $login = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+    if (Auth::attempt([$login => $request->login, "password" => $request->password])) {
       $user = Auth::user();
-      $token = $user->createToken('api')->accessToken;
-      return response()->json(['status' => 'success', 'token' => $token], JsonResponse::HTTP_ACCEPTED);
+      $token = $user->createToken("api")->accessToken;
+      return response()->json(["status" => "success", "token" => $token], JsonResponse::HTTP_ACCEPTED);
     } else {
-      return response()->json(['status' => 'error', 'message' => 'Credential error'], JsonResponse::HTTP_BAD_REQUEST);
+      return response()->json(["status" => "error", "message" => "Credential error"], JsonResponse::HTTP_BAD_REQUEST);
     }
   }
 
@@ -29,6 +31,6 @@ class UserController extends Controller {
   public function edit(UserRequest $request) {
     $user = Auth::user();
     $user->update($request->all());
-    return response()->json(['status' => 'ok'], 200);
+    return response()->json(["status" => "ok"], 200);
   }
 }

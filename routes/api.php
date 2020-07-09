@@ -12,7 +12,7 @@ Route::group(['middleware' => ['api']], function(){
   });
 
   Route::get('/', function () {
-    return "Good Bye World?";
+    return response()->json(['Good Bye, World!'], 202);
   });
 
 });
