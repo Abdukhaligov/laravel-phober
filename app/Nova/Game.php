@@ -3,6 +3,8 @@
 namespace App\Nova;
 
 use Digitalcloud\MultilingualNova\Multilingual;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Media;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
@@ -23,6 +25,8 @@ class Game extends Resource {
   public function fields(Request $request) {
     return [
         ID::make()->sortable(),
+        Media::make('Image', 'game'),
+
         Text::make("Name")
             ->sortable(),
         Text::make("Slug")

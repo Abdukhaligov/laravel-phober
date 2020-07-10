@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder {
     $this->call(DeviceSeeder::class);
     $this->call(GameDeviceSeeder::class);
 
+    $this->call(MediaSeeder::class);
   }
 }
