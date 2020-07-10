@@ -7,6 +7,7 @@ use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Media;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
@@ -37,6 +38,7 @@ class Game extends Resource {
             ->max(5)
             ->increment(1)
             ->sortable(),
+        Boolean::make("Multiplayer"),
 
         Textarea::make('Description')
             ->hideFromIndex(),
