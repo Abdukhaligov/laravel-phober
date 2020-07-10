@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2769792064b14169d7c58ad61e4347b0",
+    "content-hash": "9b748813f209eb959421aa4006abe5d3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -279,6 +279,48 @@
                 "symmetric key cryptography"
             ],
             "time": "2018-07-24T23:27:56+00:00"
+        },
+        {
+            "name": "digitalcloud/multilingual-nova",
+            "version": "v2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DigitalCloud/multilingual-nova.git",
+                "reference": "8a316cd52c826459f5fecad64dee1414abe16f0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DigitalCloud/multilingual-nova/zipball/8a316cd52c826459f5fecad64dee1414abe16f0c",
+                "reference": "8a316cd52c826459f5fecad64dee1414abe16f0c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0",
+                "spatie/laravel-translatable": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Digitalcloud\\MultilingualNova\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Digitalcloud\\MultilingualNova\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "💪 Multilingual Nova (using default nova fields)",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2019-07-11T13:40:45+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2196,6 +2238,48 @@
             "time": "2020-07-01T11:33:50+00:00"
         },
         {
+            "name": "media24si/nova-youtube-field",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Media24si/nova-youtube-field.git",
+                "reference": "dc45bf0f1be948cf860948b93d46106354964d98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Media24si/nova-youtube-field/zipball/dc45bf0f1be948cf860948b93d46106354964d98",
+                "reference": "dc45bf0f1be948cf860948b93d46106354964d98",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Media24si\\NovaYoutubeField\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Media24si\\NovaYoutubeField\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova Youtube field.",
+            "keywords": [
+                "laravel",
+                "nova",
+                "youtube"
+            ],
+            "time": "2018-09-16T10:45:29+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "2.1.0",
             "source": {
@@ -2425,6 +2509,57 @@
                 }
             ],
             "time": "2020-07-04T12:29:56+00:00"
+        },
+        {
+            "name": "nikaia/nova-rating-field",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikaia/nova-rating-field.git",
+                "reference": "6db4fdf4fc1177af401645149cda814f1fce27c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikaia/nova-rating-field/zipball/6db4fdf4fc1177af401645149cda814f1fce27c3",
+                "reference": "6db4fdf4fc1177af401645149cda814f1fce27c3",
+                "shasum": ""
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.11"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nikaia\\Rating\\RatingServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nikaia\\Rating\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nassif Bourguig",
+                    "email": "nbourguig@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Add start rating field to Laravel Nova",
+            "homepage": "https://github.com/nikaia/nova-rating-field",
+            "keywords": [
+                "Rating",
+                "field",
+                "laravel",
+                "nova"
+            ],
+            "time": "2019-12-24T07:19:41+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -3486,6 +3621,84 @@
                 }
             ],
             "time": "2020-03-29T20:13:32+00:00"
+        },
+        {
+            "name": "spatie/laravel-translatable",
+            "version": "4.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-translatable.git",
+                "reference": "7642b38df16a61e5738ed00c912ca522bb32b554"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-translatable/zipball/7642b38df16a61e5738ed00c912ca522bb32b554",
+                "reference": "7642b38df16a61e5738ed00c912ca522bb32b554",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.8.0|^6.0|^7.0",
+                "illuminate/support": "~5.8.0|^6.0|^7.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3",
+                "orchestra/testbench": "~3.8.0|^4.0|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Translatable\\TranslatableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Translatable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Mohamed Said",
+                    "email": "theMohamedSaid@gmail.com",
+                    "role": "Original idea"
+                }
+            ],
+            "description": "A trait to make an Eloquent model hold translations",
+            "homepage": "https://github.com/spatie/laravel-translatable",
+            "keywords": [
+                "eloquent",
+                "i8n",
+                "laravel-translatable",
+                "model",
+                "multilingual",
+                "spatie",
+                "translate"
+            ],
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-07-09T07:05:40+00:00"
         },
         {
             "name": "spatie/once",
