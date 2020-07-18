@@ -11,9 +11,9 @@ use Laravel\Nova\Fields\Text;
 
 class User extends Resource {
   public static $model = \App\Models\User::class;
-  public static $title = 'name';
+  public static $title = 'username';
   public static $search = [
-      'id', 'name', 'email',
+      'id', 'username', 'email',
   ];
 
   public function fields(Request $request) {
