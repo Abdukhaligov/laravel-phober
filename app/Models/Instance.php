@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\Types\This;
+use KirschbaumDevelopment\NovaComments\Commentable;
 use DateTime;
 
 class Instance extends Model {
+  use Commentable;
+
   protected $casts = [
       'deactivation_period_start' => 'datetime',
       'deactivation_period_end' => 'datetime',
@@ -22,6 +24,16 @@ class Instance extends Model {
     $data = parent::toArray();
     $data["device"] = $this->device;
     $data["status"] = $this->status();
+    $data["comments"] = [];
+    foreach ($this->comments as $comment){
+      $data["comments"][] = array(
+          "comment" => $comment->comment,
+          "author" => $comment->commenter->username,
+          "author_email" => $comment->commenter->email,
+          "date" => date('h:m:s d-m-Y', strtotime($comment->created_at))
+      );
+    }
+
     return $data;
   }
 

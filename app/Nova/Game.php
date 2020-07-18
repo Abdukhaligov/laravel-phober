@@ -6,6 +6,7 @@ use Digitalcloud\MultilingualNova\Multilingual;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Media;
 use Illuminate\Http\Request;
+use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
@@ -27,11 +28,8 @@ class Game extends Resource {
     return [
         ID::make()->sortable(),
         Media::make('Image', 'game'),
-
-        Text::make("Name")
-            ->sortable(),
-        Text::make("Slug")
-            ->sortable(),
+        Text::make("Name")->sortable(),
+        Text::make("Slug")->sortable(),
         Youtube::make('Video'),
         Rating::make('Rating')
             ->min(0)
@@ -39,10 +37,7 @@ class Game extends Resource {
             ->increment(1)
             ->sortable(),
         Boolean::make("Multiplayer"),
-
-        Textarea::make('Description')
-            ->hideFromIndex(),
-
+        Textarea::make('Description')->hideFromIndex(),
         Multilingual::make('Language')
             ->setLocales([
                 'en' => 'English',
@@ -50,9 +45,10 @@ class Game extends Resource {
                 'az' => 'Azerbaijan',
             ])
             ->hideFromIndex(),
-
         BelongsToMany::make("Devices"),
         BelongsToMany::make("Genres"),
+
+        new Commenter(),
     ];
   }
 }

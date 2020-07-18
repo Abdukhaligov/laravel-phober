@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
@@ -23,6 +24,7 @@ class Instance extends Resource {
         Boolean::make("Active"),
         DateTime::make("Deactivation start", "deactivation_period_start")->nullable(),
         DateTime::make("Deactivation end", "deactivation_period_end")->nullable(),
+        new Commenter(),
     ];
   }
 }

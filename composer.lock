@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "35b6cdbf000191bc208329cecf571d8a",
+    "content-hash": "68bf3b617d6329443ab3c04c2b67fa2b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1396,6 +1396,55 @@
                 "watermark"
             ],
             "time": "2019-11-02T09:15:47+00:00"
+        },
+        {
+            "name": "kirschbaum-development/nova-comments",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirschbaum-development/nova-comments.git",
+                "reference": "f4f0f6927aa81884fd9c8cc11da7a4d0133d4a37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirschbaum-development/nova-comments/zipball/f4f0f6927aa81884fd9c8cc11da7a4d0133d4a37",
+                "reference": "f4f0f6927aa81884fd9c8cc11da7a4d0133d4a37",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "KirschbaumDevelopment\\NovaComments\\NovaCommentsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KirschbaumDevelopment\\NovaComments\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brandon Ferens",
+                    "email": "brandon@kirschbaumdevelopment.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel Nova resource for commenting on model.",
+            "homepage": "https://github.com/kirschbaum-development/nova-comments",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2019-12-04T22:27:54+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
@@ -9861,7 +9910,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2.5"
+        "php": "^7.2.5",
+        "ext-simplexml": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"

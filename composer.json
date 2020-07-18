@@ -9,19 +9,20 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "ext-simplexml": "*",
         "digitalcloud/multilingual-nova": "^2.0",
         "ebess/advanced-nova-media-library": "^3.2",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
+        "kirschbaum-development/nova-comments": "^1.0",
         "laravel/framework": "^7.0",
         "laravel/nova": "*",
         "laravel/passport": "^9.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "media24si/nova-youtube-field": "^1.0",
-        "nikaia/nova-rating-field": "^1.0",
-      "ext-simplexml": "*"
+        "nikaia/nova-rating-field": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

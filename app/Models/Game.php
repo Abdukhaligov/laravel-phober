@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use KirschbaumDevelopment\NovaComments\Commentable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
 
 class Game extends Model implements HasMedia {
-  use HasTranslations, InteractsWithMedia;
+  use HasTranslations, InteractsWithMedia, Commentable;
 
   public $translatable = ['description'];
 
