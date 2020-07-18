@@ -13,8 +13,8 @@ class CreateCustomersTable extends Migration {
       $table->string('email')->nullable();
       $table->boolean('gender')->default(false);
       $table->date('birthday');
-      $table->bigInteger('created_by')->unsigned();
-      $table->foreign('created_by')->references('id')->on('users');
+      $table->bigInteger('author_id')->unsigned();
+      $table->foreign('author_id')->references('id')->on('users');
       $table->timestamps();
     });
   }

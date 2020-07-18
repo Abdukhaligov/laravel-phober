@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use App\Loggable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable {
-  use HasApiTokens, Notifiable;
+  use HasApiTokens, Notifiable, Loggable;
 
   protected $fillable = [
-      'name', 'email', 'password',
+      'name', 'email', 'password','username'
   ];
 
   protected $hidden = [

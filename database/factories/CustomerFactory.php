@@ -22,6 +22,6 @@ $factory->define(Customer::class, function (Faker $faker) {
       'phone' => '994' . $number . rand(221, 795) . rand(21, 98) . rand(10, 85),
       'email' => (boolean)rand(0, 1) ? $faker->email : '',
       'birthday' => $faker->dateTime,
-      'created_by' => User::all()->random()
+      'author_id' => User::all()->random()
   ];
 });

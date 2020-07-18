@@ -6,9 +6,11 @@ Route::group(['middleware' => ['api']], function(){
 
   Route::post('login', 'Api\UserController@login');
 
-  Route::group(['middleware' => ['auth']], function(){
+  Route::group(['middleware' => ['auth:api']], function(){
     Route::post('details', 'Api\UserController@details');
-    Route::put('profile/edit', 'Api\UserController@edit');
+    Route::put('profile/update', 'Api\UserController@update');
+    Route::get('user/list', 'Api\UserController@list');
+    Route::get('role/list', 'Api\RoleController@list');
   });
 
   Route::get('/', function () {

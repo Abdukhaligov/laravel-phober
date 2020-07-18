@@ -17,10 +17,8 @@ class UserRequest extends FormRequest {
 
   public function rules() {
     return [
-        'name' => ['required', 'string', 'max:255'],
+        'username' => ['required', 'string', 'max:255'],
         'email' => [Rule::unique('users')->ignore($this->user()->id)],
-        'company_id' => ['sometimes', 'exists:companies,id', 'nullable'],
-        'position_id' => ['sometimes', 'exists:positions,id', 'nullable'],
     ];
   }
 

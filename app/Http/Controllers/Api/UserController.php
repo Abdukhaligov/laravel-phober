@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use App\Models\Logs;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\JsonResponse;
@@ -16,21 +17,32 @@ class UserController extends Controller {
     if (Auth::attempt([$login => $request->login, "password" => $request->password])) {
       $user = Auth::user();
       $token = $user->createToken("api")->accessToken;
-      return response()->json(["status" => "success", "token" => $token], JsonResponse::HTTP_ACCEPTED);
+
+      $user->logs()->create(["body" => "Successfully login", "ip" => $request->ip()]);
+
+      return response()->json(["status" => "success", "token" => $token], JsonResponse::HTTP_OK);
     } else {
-      return response()->json(["status" => "fail", "message" => "Credential error"], JsonResponse::HTTP_BAD_REQUEST);
+
+      Logs::create([
+          "body" => "Fail login, request: ". json_encode($request->all()),
+          "ip" => $request->ip()
+      ]);
+
+      return response()->json(["status" => "error", "message" => "Credential error"], JsonResponse::HTTP_OK);
     }
   }
 
   public function details() {
-    $user = Auth::user();
-
-    return response()->json(["status" => "success", "details" => $user], JsonResponse::HTTP_ACCEPTED);
+    return response()->json(Auth::user(), JsonResponse::HTTP_OK);
   }
 
-  public function edit(UserRequest $request) {
+  public function update(UserRequest $request) {
     $user = Auth::user();
     $user->update($request->all());
-    return response()->json(["status" => "success"], 200);
+    return response()->json(["status" => "success"], JsonResponse::HTTP_OK);
+  }
+
+  public function list(){
+    return User::all();
   }
 }
