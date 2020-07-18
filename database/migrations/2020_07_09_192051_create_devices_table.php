@@ -10,6 +10,7 @@ class CreateDevicesTable extends Migration {
       $table->id();
       $table->string("name");
       $table->string("slug");
+      $table->json("description")->nullable();
       $table->timestamps();
     });
   }

@@ -18,19 +18,19 @@ class UserController extends Controller {
       $token = $user->createToken("api")->accessToken;
       return response()->json(["status" => "success", "token" => $token], JsonResponse::HTTP_ACCEPTED);
     } else {
-      return response()->json(["status" => "error", "message" => "Credential error"], JsonResponse::HTTP_BAD_REQUEST);
+      return response()->json(["status" => "fail", "message" => "Credential error"], JsonResponse::HTTP_BAD_REQUEST);
     }
   }
 
   public function details() {
     $user = Auth::user();
 
-    return response()->json($user, JsonResponse::HTTP_ACCEPTED);
+    return response()->json(["status" => "success", "details" => $user], JsonResponse::HTTP_ACCEPTED);
   }
 
   public function edit(UserRequest $request) {
     $user = Auth::user();
     $user->update($request->all());
-    return response()->json(["status" => "ok"], 200);
+    return response()->json(["status" => "success"], 200);
   }
 }

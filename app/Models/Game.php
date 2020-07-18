@@ -7,8 +7,9 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
 
-class Game extends Model implements HasMedia  {
+class Game extends Model implements HasMedia {
   use HasTranslations, InteractsWithMedia;
+
   public $translatable = ['description'];
 
   public function registerMediaCollections(): void {
@@ -17,11 +18,11 @@ class Game extends Model implements HasMedia  {
         ->useDisk('media');
   }
 
-  public function genres(){
+  public function genres() {
     return $this->belongsToMany(Genre::class, "game_genre");
   }
 
-  public function devices(){
+  public function devices() {
     return $this->belongsToMany(Device::class, "game_device");
   }
 }
