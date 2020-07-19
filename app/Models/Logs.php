@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Logs extends Model {
   protected $fillable = [
-      "body", "ip"
+      'body', 'ip', 'url', 'action', 'author_id'
   ];
+
   /**
    * @return MorphTo
    */
