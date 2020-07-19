@@ -2816,6 +2816,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2823,7 +2831,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       updatedUser: {
-        username: "",
+        full_name: "",
         email: ""
       },
       token: Object(tiny_cookie__WEBPACK_IMPORTED_MODULE_1__["getCookie"])('token')
@@ -62887,7 +62895,7 @@ var staticRenderFns = [
       { staticClass: "navbar-item theme-brand flex-row  text-center" },
       [
         _c("li", { staticClass: "nav-item theme-text" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "/" } }, [
+          _c("a", { staticClass: "nav-link", attrs: { href: "/res" } }, [
             _vm._v(" POU ")
           ])
         ])
@@ -62934,7 +62942,7 @@ var staticRenderFns = [
         [
           _c("img", {
             staticClass: "flag-width",
-            attrs: { src: "assets/img/ca.png", alt: "flag" }
+            attrs: { src: "/assets/img/ca.png", alt: "flag" }
           })
         ]
       ),
@@ -62955,7 +62963,7 @@ var staticRenderFns = [
             [
               _c("img", {
                 staticClass: "flag-width",
-                attrs: { src: "assets/img/de.png", alt: "flag" }
+                attrs: { src: "/assets/img/de.png", alt: "flag" }
               }),
               _vm._v(" "),
               _c("span", { staticClass: "align-self-center" }, [
@@ -62973,7 +62981,7 @@ var staticRenderFns = [
             [
               _c("img", {
                 staticClass: "flag-width",
-                attrs: { src: "assets/img/jp.png", alt: "flag" }
+                attrs: { src: "/assets/img/jp.png", alt: "flag" }
               }),
               _vm._v(" "),
               _c("span", { staticClass: "align-self-center" }, [
@@ -62991,7 +62999,7 @@ var staticRenderFns = [
             [
               _c("img", {
                 staticClass: "flag-width",
-                attrs: { src: "assets/img/fr.png", alt: "flag" }
+                attrs: { src: "/assets/img/fr.png", alt: "flag" }
               }),
               _vm._v(" "),
               _c("span", { staticClass: "align-self-center" }, [
@@ -63009,7 +63017,7 @@ var staticRenderFns = [
             [
               _c("img", {
                 staticClass: "flag-width",
-                attrs: { src: "assets/img/ca.png", alt: "flag" }
+                attrs: { src: "/assets/img/ca.png", alt: "flag" }
               }),
               _vm._v(" "),
               _c("span", { staticClass: "align-self-center" }, [
@@ -63039,7 +63047,7 @@ var staticRenderFns = [
                 _c("div", { staticClass: "user-img" }, [
                   _c("img", {
                     staticClass: "usr-img rounded-circle",
-                    attrs: { src: "assets/img/profile-11.jpg", alt: "profile" }
+                    attrs: { src: "/assets/img/profile-11.jpg", alt: "profile" }
                   })
                 ]),
                 _vm._v(" "),
@@ -63064,7 +63072,7 @@ var staticRenderFns = [
                 _c("div", { staticClass: "user-img" }, [
                   _c("img", {
                     staticClass: "usr-img rounded-circle",
-                    attrs: { src: "assets/img/profile-16.jpg", alt: "profile" }
+                    attrs: { src: "/assets/img/profile-16.jpg", alt: "profile" }
                   })
                 ]),
                 _vm._v(" "),
@@ -63089,7 +63097,7 @@ var staticRenderFns = [
                 _c("div", { staticClass: "user-img" }, [
                   _c("img", {
                     staticClass: "usr-img rounded-circle",
-                    attrs: { src: "assets/img/profile-34.jpg", alt: "profile" }
+                    attrs: { src: "/assets/img/profile-34.jpg", alt: "profile" }
                   })
                 ]),
                 _vm._v(" "),
@@ -63164,7 +63172,7 @@ var staticRenderFns = [
       },
       [
         _c("img", {
-          attrs: { src: "assets/img/profile-16.jpg", alt: "avatar" }
+          attrs: { src: "/assets/img/profile-16.jpg", alt: "avatar" }
         })
       ]
     )
@@ -63649,34 +63657,46 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "text", id: "updateUsername", disabled: "" },
+                domProps: { value: _vm.user.username }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "updateUsername" } }, [
+                _vm._v("Full name")
+              ]),
+              _vm._v(" "),
+              _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.updatedUser.username,
-                    expression: "updatedUser.username"
+                    value: _vm.updatedUser.full_name,
+                    expression: "updatedUser.full_name"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: {
                   type: "text",
-                  id: "updateUsername",
+                  id: "updateFullName",
                   placeholder: "Enter username"
                 },
-                domProps: { value: _vm.updatedUser.username },
+                domProps: { value: _vm.updatedUser.full_name },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.updatedUser, "username", $event.target.value)
+                    _vm.$set(_vm.updatedUser, "full_name", $event.target.value)
                   }
                 }
               }),
               _vm._v(" "),
-              _vm.errors.username
+              _vm.errors.full_name
                 ? _c("div", { staticClass: "invalid" }, [
-                    _c("strong", [_vm._v(_vm._s(_vm.errors.username[0]))])
+                    _c("strong", [_vm._v(_vm._s(_vm.errors.full_name[0]))])
                   ])
                 : _vm._e()
             ]),
@@ -63737,7 +63757,7 @@ var render = function() {
                       on: {
                         click: function($event) {
                           _vm.$bvModal.show("modal-user-update")
-                          _vm.updatedUser.username = _vm.user.username
+                          _vm.updatedUser.full_name = _vm.user.full_name
                           _vm.updatedUser.email = _vm.user.email
                         }
                       }
@@ -63776,7 +63796,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "text-center user-info" }, [
                   _c("img", {
-                    attrs: { src: "assets/img/profile-3.jpg", alt: "avatar" }
+                    attrs: { src: "/assets/img/profile-3.jpg", alt: "avatar" }
                   }),
                   _vm._v(" "),
                   _c("p", {}, [_vm._v(_vm._s(_vm.user.username))])

@@ -7,10 +7,18 @@
           <input type="text"
                  class="form-control"
                  id="updateUsername"
-                 v-model="updatedUser.username"
+                 :value="user.username"
+                 disabled>
+        </div>
+        <div class="form-group">
+          <label for="updateUsername">Full name</label>
+          <input type="text"
+                 class="form-control"
+                 id="updateFullName"
+                 v-model="updatedUser.full_name"
                  placeholder="Enter username">
-          <div v-if="errors.username" class="invalid">
-            <strong>{{ errors.username[0] }}</strong>
+          <div v-if="errors.full_name" class="invalid">
+            <strong>{{ errors.full_name[0] }}</strong>
           </div>
         </div>
         <div class="form-group">
@@ -45,7 +53,7 @@
               <h3 class="">Profile</h3>
               <a href="#"
                  @click="$bvModal.show('modal-user-update');
-                 updatedUser.username = user.username;
+                 updatedUser.full_name = user.full_name;
                  updatedUser.email = user.email;"
                  class="mt-2 edit-profile">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -57,7 +65,7 @@
               </a>
             </div>
             <div class="text-center user-info">
-              <img src="assets/img/profile-3.jpg" alt="avatar">
+              <img src="/assets/img/profile-3.jpg" alt="avatar">
               <p class="">{{ user.username }}</p>
             </div>
             <div class="user-info-list">
@@ -118,7 +126,7 @@
     data() {
       return {
         updatedUser: {
-          username: "",
+          full_name: "",
           email: "",
         },
         token: getCookie('token')

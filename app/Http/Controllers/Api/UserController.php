@@ -51,7 +51,10 @@ class UserController extends Controller {
         "body" => json_encode([
             "status" => "Success",
             "request" => $request->all(),
-            "old" => $user,
+            "old" => array(
+                "email" => $user->email,
+                "full_name" => $user->full_name
+            ),
         ]),
     ];
 
