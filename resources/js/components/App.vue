@@ -30,6 +30,8 @@
   import '../../libs/cork/assets/css/components/cards/card.css';
   import '../../libs/cork/assets/css/components/custom-modal.css';
   import '../../libs/cork/assets/css/users/user-profile.css';
+  import '@fortawesome/fontawesome-free/css/all.css'
+  import '@fortawesome/fontawesome-free/js/all.js'
 
 
   import Login from "./Auth/Login";
@@ -51,7 +53,7 @@
     },
     computed: mapState(["credential", "loading"]),
     methods: {
-      ...mapActions(['setCredential', 'getUser', 'getUsers', 'getRoles']),
+      ...mapActions(['setCredential', 'getUser', 'getUsers', 'getRoles', 'getCustomers']),
       getCookie,
     },
     mounted() {
@@ -59,6 +61,7 @@
         this.getUser(this.token);
         this.getUsers(this.token);
         this.getRoles(this.token);
+        this.getCustomers(this.token);
       }
     },
     watch: {
@@ -68,6 +71,7 @@
           this.getUser(this.credential.token);
           this.getUsers(this.credential.token);
           this.getRoles(this.credential.token);
+          this.getCustomers(this.credential.token);
         } else {
           removeCookie('token');
         }

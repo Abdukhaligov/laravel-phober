@@ -11,13 +11,14 @@ export default new Vuex.Store({
 
     users: [],
     roles: [],
-    
+    customers: [],
+
     errors: {},
     
     loading: false,
     url: 'http://phober/api/',
 
-    page: ['user','profile'],
+    page: ['customer','list'],
     sideBar: false
   },
   actions: {
@@ -75,6 +76,13 @@ export default new Vuex.Store({
         .get(state.url + "role/list", config)
         .then(r => commit('GET_ROLES', r.data));
     },
+    getCustomers({commit, state}, token) {
+      let config = {headers: {Authorization: `Bearer ${token}`}};
+
+      axios
+        .get(state.url + "customers", config)
+        .then(r => {commit('GET_CUSTOMERS', r.data.data)});
+    },
   },
   mutations: {
     SET_PAGE(state, page) {
@@ -104,6 +112,9 @@ export default new Vuex.Store({
     },
     GET_ROLES(state, roles) {
       state.roles = roles;
+    },
+    GET_CUSTOMERS(state, customers) {
+      state.customers = customers;
     },
   }
 })

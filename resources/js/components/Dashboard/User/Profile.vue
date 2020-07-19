@@ -42,7 +42,7 @@
       </template>
     </b-modal>
 
-    <div class="row layout-spacing">
+    <div class="row layout-top-spacing">
 
       <!-- Content -->
       <div class="col-xl-4 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">

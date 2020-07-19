@@ -12,7 +12,7 @@ class CreateCustomersTable extends Migration {
       $table->string('phone');
       $table->string('email')->nullable();
       $table->boolean('gender')->default(false);
-      $table->date('birthday');
+      $table->date('birthday')->nullable();
       $table->bigInteger('author_id')->unsigned();
       $table->foreign('author_id')->references('id')->on('users');
       $table->timestamps();

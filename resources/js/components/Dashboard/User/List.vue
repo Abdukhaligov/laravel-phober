@@ -1,7 +1,7 @@
 <template>
   <div class="layout-px-spacing">
     <div class="row layout-top-spacing">
-      <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+      <div class="col-xl-12 col-lg-12 col-sm-12 layout-top-spacing">
         <div class="widget-content widget-content-area br-6">
           <div class="table-responsive mb-4 mt-4">
             <b-table hover foot-clone bordered
