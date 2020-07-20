@@ -17,7 +17,6 @@ class UserRequest extends FormRequest {
 
   public function rules() {
     return [
-        'username' => ['required', 'string', 'max:255'],
         'email' => [Rule::unique('users')->ignore($this->user()->id)],
     ];
   }

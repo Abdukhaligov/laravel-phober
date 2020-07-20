@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\InstanceCollection;
 use App\Models\Instance;
-use Illuminate\Http\JsonResponse;
+use App\Http\Resources\Instance as InstanceResource;
 use Illuminate\Http\Request;
 
 class InstanceController extends Controller {
   public function index() {
-    //
+    return new InstanceCollection(Instance::all());
   }
 
   public function store(Request $request) {
@@ -17,9 +18,7 @@ class InstanceController extends Controller {
   }
 
   public function show($id) {
-    $instance = Instance::find($id);
-
-    return response()->json($instance, JsonResponse::HTTP_ACCEPTED);
+    return new InstanceResource(Instance::find($id));
   }
 
   public function update(Request $request, $id) {

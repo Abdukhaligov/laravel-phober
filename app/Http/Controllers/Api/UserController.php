@@ -4,13 +4,23 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use App\Http\Resources\UserCollection;
 use App\Models\Logs;
 use App\Models\User;
+use App\Http\Resources\User as UserResource;
 use Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
+  public function index() {
+    return new UserCollection(User::all());
+  }
+
+  public function details() {
+    return new UserResource(Auth::user());
+  }
+
   public function login(Request $request) {
     $login = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
     $logs = [
@@ -37,10 +47,6 @@ class UserController extends Controller {
     }
   }
 
-  public function details() {
-    return response()->json(Auth::user(), JsonResponse::HTTP_OK);
-  }
-
   public function update(UserRequest $request) {
     $user = Auth::user();
     $logs = [
@@ -62,9 +68,5 @@ class UserController extends Controller {
 
     $user->update($request->all());
     return response()->json(["status" => "success"], JsonResponse::HTTP_OK);
-  }
-
-  public function list() {
-    return User::all();
   }
 }

@@ -66,7 +66,7 @@ export default new Vuex.Store({
       let config = {headers: {Authorization: `Bearer ${token}`}};
 
       axios
-        .get(state.url + "user/list", config)
+        .get(state.url + "users", config)
         .then(r => commit('GET_USERS', r.data));
     },
     getRoles({commit, state}, token) {
@@ -81,7 +81,7 @@ export default new Vuex.Store({
 
       axios
         .get(state.url + "customers", config)
-        .then(r => {commit('GET_CUSTOMERS', r.data.data)});
+        .then(r => {commit('GET_CUSTOMERS', r.data)});
     },
   },
   mutations: {
@@ -104,17 +104,17 @@ export default new Vuex.Store({
       state.credential = "";
     },
     SET_USER(state, user) {
-      state.user = user;
+      state.user = user.data;
     },
 
     GET_USERS(state, users) {
-      state.users = users;
+      state.users = users.data;
     },
     GET_ROLES(state, roles) {
       state.roles = roles;
     },
     GET_CUSTOMERS(state, customers) {
-      state.customers = customers;
+      state.customers = customers.data;
     },
   }
 })

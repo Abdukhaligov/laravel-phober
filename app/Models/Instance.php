@@ -14,27 +14,8 @@ class Instance extends Model {
       'deactivation_period_end' => 'datetime',
   ];
 
-  protected $hidden = ['created_at', 'updated_at', 'device_id'];
-
   public function device() {
     return $this->belongsTo(Device::class);
-  }
-
-  public function toArray() {
-    $data = parent::toArray();
-    $data["device"] = $this->device;
-    $data["status"] = $this->status();
-    $data["comments"] = [];
-    foreach ($this->comments as $comment){
-      $data["comments"][] = array(
-          "comment" => $comment->comment,
-          "author" => $comment->commenter->username,
-          "author_email" => $comment->commenter->email,
-          "date" => date('h:m:s d-m-Y', strtotime($comment->created_at))
-      );
-    }
-
-    return $data;
   }
 
   public function status() {
