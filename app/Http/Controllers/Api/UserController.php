@@ -3,18 +3,22 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
-use App\Http\Resources\UserCollection;
+use Auth;
 use App\Models\Logs;
 use App\Models\User;
 use App\Http\Resources\User as UserResource;
-use Auth;
+use App\Http\Requests\UserRequest;
+use App\Http\Resources\UserCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
   public function index() {
     return new UserCollection(User::all());
+  }
+
+  public function show($id){
+    return new UserResource(User::find($id));
   }
 
   public function details() {
@@ -49,6 +53,9 @@ class UserController extends Controller {
 
   public function update(UserRequest $request) {
     $user = Auth::user();
+
+    if ($request->id && $user->isAdmin()) $user = User::find($request->id);
+
     $logs = [
         "action" => __FUNCTION__,
         "ip" => $request->ip(),
@@ -67,6 +74,6 @@ class UserController extends Controller {
     $user->logs()->create($logs);
 
     $user->update($request->all());
-    return response()->json(["status" => "success"], JsonResponse::HTTP_OK);
+    return response()->json(["status" => "success", "data" => new UserResource($user)], JsonResponse::HTTP_OK);
   }
 }
