@@ -157,7 +157,7 @@
 
           <!-- Info modal -->
           <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
-            <pre>{{ infoModal.content }}</pre>
+            <pre style="color: white">{{ infoModal.content }}</pre>
           </b-modal>
         </b-container>
       </div>

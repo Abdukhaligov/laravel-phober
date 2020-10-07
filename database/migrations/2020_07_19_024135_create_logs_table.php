@@ -13,9 +13,9 @@ class CreateLogsTable extends Migration {
       $table->string('action')->nullable();
       $table->bigInteger('author_id')->unsigned()->nullable();
       $table->foreign('author_id')->references('id')->on('users')->onDelete('SET NULL');
-      $table->ipAddress('ip');
-      $table->string('url');
-      $table->json('body');
+      $table->ipAddress('ip')->nullable();
+      $table->string('url')->nullable();
+      $table->json('body')->nullable();
       $table->timestamps();
     });
   }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Logs;
+use App\Models\Log;
 
 class SpaController extends Controller {
   public function index() {
@@ -15,7 +15,7 @@ class SpaController extends Controller {
         ]),
     ];
 
-    Logs::create($logs);
+    Log::create($logs);
 
     return view('spa');
   }

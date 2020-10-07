@@ -12,9 +12,7 @@ Route::group(['middleware' => ['api']], function(){
 
     Route::put('profile/update', 'Api\UserController@update');
     Route::get('role/list', 'Api\RoleController@list');
-
   });
-
 });
 
 
