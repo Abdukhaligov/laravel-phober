@@ -46,13 +46,13 @@ export default new Vuex.Store({
     getUser({commit, state}, token) {
       let config = {headers: {Authorization: `Bearer ${token}`}};
       axios
-        .post(state.url + "details", '', config)
+        .get(state.url + "details", config)
         .then(r => commit('SET_USER', r.data));
     },
     async updateUser({commit, state}, args) {
       let config = {headers: {Authorization: `Bearer ${args.token}`}};
 
-      await axios.put(state.url + "profile/update", args.data, config)
+      await axios.put(state.url + "users/update", args.data, config)
         .catch(r => {
           commit('SET_ERRORS', r.response.data.errors)
         });

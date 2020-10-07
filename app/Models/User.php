@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 /**
  * @method static find($id)
+ * @method static create(array $array)
  * @property int id
  * @property string username
  * @property string email
