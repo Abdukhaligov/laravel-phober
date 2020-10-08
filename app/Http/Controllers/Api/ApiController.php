@@ -8,7 +8,9 @@ use Illuminate\Http\JsonResponse;
 class ApiController extends Controller{
   protected static final function notFound(){
     $data["apiVersion"] = config("api.version");
-    $data["message"] = "Customer card not found";
+    $data["error"] = [
+      "message" => "Not found",
+    ];
     return response()->json($data, JsonResponse::HTTP_NOT_FOUND);
   }
 

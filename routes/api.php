@@ -6,6 +6,7 @@ Route::group(['middleware' => ['api']], function(){
   require 'api/devices.php';
   require 'api/games.php';
   require 'api/users.php';
+  require 'api/bars.php';
 });
 
 

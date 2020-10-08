@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Collection;
  * @property DateTime created_at
  * @property DateTime updated_at
  * @method getTranslations(string $string)
+ * @method getFirstMediaUrl(string $collectionName)
  */
 class Game extends JsonResource{
   public function toArray($request){
@@ -39,6 +40,7 @@ class Game extends JsonResource{
       "name" => $this->name,
       "slug" => $this->slug,
       "video" => "https://www.youtube.com/watch?v=".$this->video,
+      "image" => $this->getFirstMediaUrl('game'),
       "rating" => $this->rating,
       "multiplayer" => $this->multiplayer,
       "devices" => $this->devices,

@@ -25,6 +25,7 @@ use DateTime;
  * @property DateTime updated_at
  * @method static find($id)
  * @method getTranslations(string $string)
+ * @method getFirstMediaUrl(string $collectionName)
  */
 class Game extends Model implements HasMedia{
   use HasTranslations, InteractsWithMedia, Commentable;

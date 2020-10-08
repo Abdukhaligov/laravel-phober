@@ -29,6 +29,7 @@ class Device extends JsonResource{
         "date" => date('h:m:s d-m-Y', strtotime($comment->created_at))
       );
     }
+
     return [
       "id" => $this->id,
       "name" => $this->name,
