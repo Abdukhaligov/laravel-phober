@@ -13,7 +13,7 @@ class InstanceController extends ApiController{
   }
 
   public function store(Request $request){
-    //
+    return FALSE;
   }
 
   public function show($id){
@@ -25,10 +25,10 @@ class InstanceController extends ApiController{
   }
 
   public function update(Request $request, $id){
-    //
+    return FALSE;
   }
 
   public function destroy($id){
-    //
+    return FALSE;
   }
 }

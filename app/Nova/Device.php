@@ -9,32 +9,34 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use KirschbaumDevelopment\NovaComments\Commenter;
 
-class Device extends Resource {
+class Device extends Resource{
   public static $model = \App\Models\Device::class;
   public static $title = 'name';
   public static $search = [
-      'id', 'name'
+    'id', 'name'
   ];
 
-  public function fields(Request $request) {
+  public function fields(Request $request){
     return [
-        ID::make()->sortable(),
-        Text::make("Name")
-            ->sortable(),
+      ID::make()->sortable(),
+      Text::make("Name")
+        ->sortable(),
 
-        Textarea::make('Description')
-            ->hideFromIndex(),
+      Textarea::make('Description')
+        ->hideFromIndex(),
 
-        Multilingual::make('Language')
-            ->setLocales([
-                'en' => 'English',
-                'ru' => 'Russian',
-                'az' => 'Azerbaijan',
-            ])
-            ->hideFromIndex(),
+      Multilingual::make('Language')
+        ->setLocales([
+          'en' => 'English',
+          'ru' => 'Russian',
+          'az' => 'Azerbaijan',
+        ])
+        ->hideFromIndex(),
 
-        BelongsToMany::make("Games")
+      BelongsToMany::make("Games"),
+      new Commenter(),
     ];
   }
 }
