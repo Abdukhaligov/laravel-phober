@@ -6,42 +6,54 @@ use Illuminate\Database\Eloquent\Model;
 use KirschbaumDevelopment\NovaComments\Commentable;
 use DateTime;
 
-class Instance extends Model {
+/**
+ * @property integer id
+ * @property bool active
+ * @property array comments
+ * @property Device device
+ * @property DateTime deactivation_start
+ * @property DateTime deactivation_end
+ * @method static find($id)
+ */
+class Instance extends Model{
   use Commentable;
 
+  const ACTIVE = TRUE;
+  const INACTIVE = FALSE;
   protected $casts = [
-      'deactivation_period_start' => 'datetime',
-      'deactivation_period_end' => 'datetime',
+    'active' => 'boolean',
+    'deactivation_period_start' => 'datetime',
+    'deactivation_period_end' => 'datetime',
   ];
 
-  public function device() {
+  public function device(){
     return $this->belongsTo(Device::class);
   }
 
-  public function status() {
+  public function isActiveNow(){
     $now = new DateTime();
     $now = $now->format('Y-m-d h:m:s');
 
-    if (!$this->active) {
-      if (!$this->deactivation_start && !$this->deactivation_end) {
-        return false;
-      } elseif ($this->deactivation_start && $this->deactivation_end) {
-        if ($now > $this->deactivation_start && $now < $this->deactivation_end) {
-          return false;
+    if(!$this->active){
+      if(!$this->deactivation_start && !$this->deactivation_end){
+        return FALSE;
+      }elseif($this->deactivation_start && $this->deactivation_end){
+        if($now > $this->deactivation_start && $now < $this->deactivation_end){
+          return FALSE;
         }
-      } elseif (!$this->deactivation_start && $this->deactivation_end) {
-        if ($now < $this->deactivation_end) {
-          return false;
+      }elseif(!$this->deactivation_start && $this->deactivation_end){
+        if($now < $this->deactivation_end){
+          return FALSE;
         }
-      } elseif ($this->deactivation_start && !$this->deactivation_end) {
-        if ($now > $this->deactivation_start) {
-          return false;
+      }elseif($this->deactivation_start && !$this->deactivation_end){
+        if($now > $this->deactivation_start){
+          return FALSE;
         }
-      } else {
-        return true;
+      }else{
+        return TRUE;
       }
     }
 
-    return true;
+    return TRUE;
   }
 }

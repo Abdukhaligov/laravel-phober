@@ -8,8 +8,6 @@ class CustomerCardCollection extends ResourceCollection{
   public $collects = 'App\Http\Resources\CustomerCard';
 
   public function toArray($request){
-    return [
-      'data' => $this->collection,
-    ];
+    return $this->collection;
   }
 }

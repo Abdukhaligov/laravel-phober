@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\CustomerCard;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Resources\CustomerCardCollection;
 use App\Http\Resources\CustomerCard as CustomerCardResource;
@@ -13,13 +11,9 @@ use Auth;
 use App\Models\User;
 use App\Http\Requests\CustomerCardUpdateRequest;
 
-class CustomerCardController extends Controller{
-  private static function notFound(){
-    return response()->json(['message' => 'Customer card not found'], JsonResponse::HTTP_NOT_FOUND);
-  }
-
+class CustomerCardController extends ApiController{
   public function index(){
-    return new CustomerCardCollection(CustomerCard::all());
+    return self::responseJson(new CustomerCardCollection(CustomerCard::all()));
   }
 
   public function store(CustomerCardRequest $request){
@@ -31,15 +25,15 @@ class CustomerCardController extends Controller{
     $customerCard->author_id = $user->id;
     $customerCard->save();
 
-    return $customerCard;
+    return self::responseJson($customerCard);
   }
 
   public function show($id){
     $customerCard = CustomerCard::find($id);
 
-    if(!$customerCard) return self::notFound();
-
-    return new CustomerCardResource(CustomerCard::find($id));
+    return $customerCard?
+      self::responseJson(new CustomerCardResource($customerCard)):
+      self::notFound();
   }
 
   public function update(CustomerCardUpdateRequest $request, $id){
@@ -48,9 +42,9 @@ class CustomerCardController extends Controller{
     if(!$customerCard) return self::notFound();
 
     if($customerCard->update($request->all())){
-      return response()->json(['message' => 'Customer card successfully updated']);
+      return self::responseJson(['message' => 'Customer card successfully updated'], JsonResponse::HTTP_OK);
     }else{
-      return response()->json(['message' => 'Customer card not updated'], JsonResponse::HTTP_BAD_REQUEST);
+      return self::responseJson(['message' => 'Customer card not updated'], JsonResponse::HTTP_BAD_REQUEST);
     }
   }
 
@@ -60,9 +54,9 @@ class CustomerCardController extends Controller{
     if(!$customerCard) return self::notFound();
 
     if($customerCard->delete()){
-      return response()->json(['message' => 'Customer card successfully deleted']);
+      return self::responseJson(['message' => 'Customer card successfully deleted'], JsonResponse::HTTP_OK);
     }else{
-      return response()->json(['message' => 'Customer card not deleted'], JsonResponse::HTTP_BAD_REQUEST);
+      return self::responseJson(['message' => 'Customer card not deleted'], JsonResponse::HTTP_BAD_REQUEST);
     }
   }
 }

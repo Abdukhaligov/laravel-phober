@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use Auth;
 use App\Models\User;
 use App\Http\Resources\User as UserResource;
@@ -11,31 +10,34 @@ use App\Http\Resources\UserCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Role;
-use function Webmozart\Assert\Tests\StaticAnalysis\false;
 
-class UserController extends Controller{
+class UserController extends ApiController{
   public function index(){
-    return new UserCollection(User::all());
+    return self::responseJson(new UserCollection(User::all()));
   }
 
   public function store(Request $request){
-    return false;
+    return FALSE;
   }
 
   public function show($id){
-    return new UserResource(User::find($id));
+    $user = User::find($id);
+
+    return $user?
+      self::responseJson(new UserResource($user)):
+      self::notFound();
   }
 
   public function update(Request $request, $id){
-    return false;
+    return FALSE;
   }
 
   public function destroy($id){
-    return false;
+    return FALSE;
   }
 
   public function details(){
-    return new UserResource(Auth::user());
+    return self::responseJson(new UserResource(Auth::user()));
   }
 
   public function login(Request $request){
@@ -46,9 +48,9 @@ class UserController extends Controller{
       $user = Auth::user();
       $token = $user->createToken("api")->accessToken;
 
-      return response()->json(["status" => "success", "token" => $token], JsonResponse::HTTP_OK);
+      return self::responseJson(["status" => "success", "token" => $token], JsonResponse::HTTP_OK);
     }else{
-      return response()->json(["status" => "error", "message" => "Credential error"], JsonResponse::HTTP_OK);
+      return self::responseJson(["status" => "error", "message" => "Credential error"], JsonResponse::HTTP_BAD_REQUEST);
     }
   }
 
@@ -61,7 +63,7 @@ class UserController extends Controller{
     $user->updateLog(__FUNCTION__, $request, $user->toArray());
 
     $user->update($request->all());
-    return response()->json(["status" => "success", "data" => new UserResource($user)], JsonResponse::HTTP_OK);
+    return self::responseJson(["status" => "success", "data" => new UserResource($user)], JsonResponse::HTTP_OK);
   }
 
   public function roleList(){

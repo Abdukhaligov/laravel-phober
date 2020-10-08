@@ -5,6 +5,17 @@ namespace App\Http\Resources;
 use DateTime;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @property int id
+ * @property string name
+ * @property string phone
+ * @property string email
+ * @property bool gender
+ * @property mixed birthday
+ * @property \App\Models\User author
+ * @property DateTime created_at
+ * @property DateTime updated_at
+ */
 class Customer extends JsonResource{
   public function toArray($request){
     $now = new DateTime();

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Resources\InstanceCollection;
 use App\Models\Instance;
 use App\Http\Resources\Instance as InstanceResource;
 use Illuminate\Http\Request;
 
-class InstanceController extends Controller{
+class InstanceController extends ApiController{
   public function index(){
-    return new InstanceCollection(Instance::all());
+    return self::responseJson(new InstanceCollection(Instance::all()));
   }
 
   public function store(Request $request){
@@ -18,7 +17,11 @@ class InstanceController extends Controller{
   }
 
   public function show($id){
-    return new InstanceResource(Instance::find($id));
+    $instance = Instance::find($id);
+
+    return $instance?
+      self::responseJson(new InstanceResource($instance)):
+      self::notFound();
   }
 
   public function update(Request $request, $id){

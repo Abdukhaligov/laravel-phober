@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\User;
+use DateTime;
 
 /**
  * @property integer id
@@ -13,13 +14,10 @@ use App\Models\User;
  * @property int owner_id
  * @property User author
  * @property int author_id
+ * @property DateTime created_at
+ * @property DateTime updated_at
  */
 class CustomerCard extends JsonResource{
-  /**
-   * Transform the resource into an array.
-   * @param \Illuminate\Http\Request $request
-   * @return array
-   */
   public function toArray($request){
     return [
       "id" => $this->id,

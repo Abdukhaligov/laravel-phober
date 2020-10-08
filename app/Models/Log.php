@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 /**
  * @method static create(array $array)
  */
-class Log extends Model {
+class Log extends Model{
   protected $fillable = [
-      'body', 'ip', 'url', 'action', 'author_id'
+    'body', 'ip', 'url', 'action', 'author_id'
   ];
 
   /**
    * @return MorphTo
    */
-  public function loggable() {
+  public function loggable(){
     return $this->morphTo();
   }
 }

@@ -4,11 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use KirschbaumDevelopment\NovaComments\Commentable;
+use DateTime;
 
 /**
  * @method static create(array $all)
  * @method static find($id)
+ * @property int id
+ * @property string name
+ * @property string phone
+ * @property string email
+ * @property bool gender
+ * @property mixed birthday
+ * @property User author
  * @property int author_id
+ * @property DateTime created_at
+ * @property DateTime updated_at
  */
 class Customer extends Model{
   use Commentable;

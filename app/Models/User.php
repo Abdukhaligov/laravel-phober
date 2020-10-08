@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\Collection;
+use DateTime;
 
 /**
  * @method static find($id)
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\Collection;
  * @property string email
  * @property mixed full_name
  * @property Collection roles
+ * @property DateTime created_at
+ * @property DateTime updated_at
  */
 class User extends Authenticatable{
   use HasApiTokens, Notifiable, Loggable;
