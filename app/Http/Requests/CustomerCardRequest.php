@@ -7,9 +7,8 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Validation\Rule;
 
-class CustomerUpdateRequest extends FormRequest{
+class CustomerCardRequest extends FormRequest{
   /**
    * Determine if the user is authorized to make this request.
    * @return bool
@@ -23,16 +22,9 @@ class CustomerUpdateRequest extends FormRequest{
    * @return array
    */
   public function rules(){
-    $id = substr(strrchr($this->url(), '/'), 1);
     return [
-      'name' => ['sometimes', 'required', 'string'],
-      'surname' => ['sometimes', 'required', 'string'],
-      'phone' => ['sometimes', 'required', 'string', 'regex: (^994(50|51|55|70|77)[0-9]{3}[0-9]{2}[0-9]{2}$)',
-        Rule::unique('customers', 'phone')->ignore($id)],
-      'email' => ['nullable', 'email',
-        Rule::unique('customers', 'email')->ignore($id)],
-      'gender' => ['sometimes', 'required', 'boolean'],
-      'birthday' => ['sometimes', 'required', 'date']
+      "owner_id" => ['required', 'integer', 'exists:customers,id', 'unique:customer_cards,owner_id'],
+      "number" => ['required', 'integer', 'unique:customer_cards,number'],
     ];
   }
 

@@ -34,9 +34,11 @@ class CustomerController extends Controller{
   }
 
   public function show($id){
-    $customer = new CustomerResource(Customer::find($id));
+    $customer = Customer::find($id);
 
-    return $customer ?? self::notFound();
+    if(!$customer) return self::notFound();
+
+    return new CustomerResource(Customer::find($id));
   }
 
   public function update(CustomerUpdateRequest $request, $id){
@@ -45,7 +47,7 @@ class CustomerController extends Controller{
     if(!$customer) return self::notFound();
 
     if($customer->update($request->all())){
-      return response()->json(['message' => 'Client successfully updated']);
+      return response()->json(['message' => 'Customer successfully updated']);
     }else{
       return response()->json(['message' => 'Customer not updated'], JsonResponse::HTTP_BAD_REQUEST);
     }
@@ -57,7 +59,7 @@ class CustomerController extends Controller{
     if(!$customer) return self::notFound();
 
     if($customer->delete()){
-      return response()->json(['message' => 'Client successfully deleted']);
+      return response()->json(['message' => 'Customer successfully deleted']);
     }else{
       return response()->json(['message' => 'Customer not deleted'], JsonResponse::HTTP_BAD_REQUEST);
     }

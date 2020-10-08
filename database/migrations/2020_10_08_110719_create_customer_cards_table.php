@@ -16,6 +16,9 @@ class CreateCustomerCardsTable extends Migration{
       $table->string('balance')->default(0);
       $table->bigInteger('owner_id')->unsigned()->nullable();
       $table->foreign('owner_id')->references('id')->on('customers')->onDelete('SET NULL');
+
+      $table->bigInteger('author_id')->unsigned()->nullable();
+      $table->foreign('author_id')->references('id')->on('users')->onDelete('SET NULL');
       $table->timestamps();
     });
   }

@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\User;
 
 /**
  * @property integer id
@@ -10,6 +11,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property integer balance
  * @property \App\Models\Customer owner
  * @property int owner_id
+ * @property User author
+ * @property int author_id
  */
 class CustomerCard extends JsonResource{
   /**

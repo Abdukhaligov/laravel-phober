@@ -13,15 +13,25 @@ use KirschbaumDevelopment\NovaComments\Commentable;
  * @property integer balance
  * @property Customer owner
  * @property int owner_id
+ * @property User author
+ * @property int author_id
  */
 class CustomerCard extends Model{
   use Commentable;
 
+  protected $fillable = [
+    'number', 'owner_id'
+  ];
   protected $casts = [
-    "balance" => "integer"
+    "balance" => "integer",
+    "owner_id" => "integer"
   ];
 
   public function owner(){
     return $this->belongsTo(Customer::class, "owner_id");
+  }
+
+  public function author(){
+    return $this->belongsTo(User::class, "author_id");
   }
 }
