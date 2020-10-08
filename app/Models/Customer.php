@@ -17,12 +17,15 @@ class Customer extends Model{
     'name', 'surname', 'email', 'gender', 'birthday', 'phone'
   ];
   protected $casts = [
-    "birthday" => "date",
     "gender" => "boolean",
     "author_id" => "integer",
   ];
 
   public function author(){
     return $this->belongsTo(User::class, "author_id");
+  }
+
+  public function card(){
+    return $this->hasOne(CustomerCard::class, "owner_id");
   }
 }

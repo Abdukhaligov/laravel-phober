@@ -10,14 +10,15 @@ use Auth;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\CustomerUpdateRequest;
+use \App\Http\Resources\Customer as CustomerResource;
 
 class CustomerController extends Controller{
-  public function index(){
-    return new CustomerCollection(Customer::all());
-  }
-
   private static function notFound(){
     return response()->json(['message' => 'Customer not found'], JsonResponse::HTTP_NOT_FOUND);
+  }
+
+  public function index(){
+    return new CustomerCollection(Customer::all());
   }
 
   public function store(CustomerRequest $request){
@@ -33,7 +34,7 @@ class CustomerController extends Controller{
   }
 
   public function show($id){
-    $customer = Customer::find($id);
+    $customer = new CustomerResource(Customer::find($id));
 
     return $customer ?? self::notFound();
   }
