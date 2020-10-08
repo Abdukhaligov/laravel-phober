@@ -24,7 +24,7 @@ class CustomerCard extends Model{
   ];
   protected $casts = [
     "balance" => "integer",
-    "owner_id" => "integer"
+    "number" => "string",
   ];
 
   public function owner(){

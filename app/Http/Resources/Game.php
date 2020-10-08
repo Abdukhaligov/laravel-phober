@@ -3,21 +3,25 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Database\Eloquent\Collection;
 use DateTime;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * @property int id
  * @property string name
  * @property string slug
+ * @property int rating
+ * @property bool multiplayer
+ * @property string video
  * @property string description
  * @property Collection games
+ * @property Collection devices
  * @property array comments
  * @property DateTime created_at
  * @property DateTime updated_at
  * @method getTranslations(string $string)
  */
-class Device extends JsonResource{
+class Game extends JsonResource{
   public function toArray($request){
     $comments = [];
 
@@ -29,12 +33,16 @@ class Device extends JsonResource{
         "date" => date('h:m:s d-m-Y', strtotime($comment->created_at))
       );
     }
+
     return [
       "id" => $this->id,
       "name" => $this->name,
       "slug" => $this->slug,
+      "video" => "https://www.youtube.com/watch?v=".$this->video,
+      "rating" => $this->rating,
+      "multiplayer" => $this->multiplayer,
+      "devices" => $this->devices,
       "description" => $this->getTranslations('description'),
-      "games" => $this->games,
       "comments" => $comments
     ];
   }

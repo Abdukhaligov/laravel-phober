@@ -18,6 +18,7 @@ use KirschbaumDevelopment\NovaComments\Commentable;
  * @property DateTime created_at
  * @property DateTime updated_at
  * @method static find($id)
+ * @method getTranslations(string $string)
  */
 class Device extends Model{
   use HasTranslations;

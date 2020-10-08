@@ -29,7 +29,8 @@ class Customer extends Model{
   protected $casts = [
     "birthday" => "date",
     "gender" => "boolean",
-    "author_id" => "integer",
+    "id" => "string",
+    "author_id" => "string",
   ];
 
   public function author(){

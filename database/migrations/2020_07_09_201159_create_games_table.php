@@ -12,7 +12,7 @@ class CreateGamesTable extends Migration {
       $table->string("slug")->nullable();
       $table->string("video")->nullable();
       $table->json("description")->nullable();
-      $table->integer("rating")->nullable();
+      $table->integer("rating")->nullable()->default(0);
       $table->boolean("multiplayer")->default(false);
       $table->timestamps();
     });
