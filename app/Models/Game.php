@@ -41,6 +41,7 @@ class Game extends Model implements HasMedia{
       ->useDisk('media');
   }
 
+
   public function genres(){
     return $this->belongsToMany(Genre::class, "game_genre");
   }
