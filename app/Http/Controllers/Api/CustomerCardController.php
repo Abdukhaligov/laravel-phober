@@ -41,11 +41,9 @@ class CustomerCardController extends ApiController{
 
     if(!$customerCard) return self::notFound();
 
-    if($customerCard->update($request->all())){
-      return self::responseJson(['message' => 'Customer card successfully updated'], JsonResponse::HTTP_OK);
-    }else{
-      return self::responseJson(['message' => 'Customer card not updated'], JsonResponse::HTTP_BAD_REQUEST);
-    }
+    return $customerCard->update($request->all())?
+      self::responseJson(['message' => 'Customer card successfully updated'], JsonResponse::HTTP_OK):
+      self::responseJson(['message' => 'Customer card not updated'], JsonResponse::HTTP_BAD_REQUEST);
   }
 
   public function destroy($id){
@@ -53,10 +51,8 @@ class CustomerCardController extends ApiController{
 
     if(!$customerCard) return self::notFound();
 
-    if($customerCard->delete()){
-      return self::responseJson(['message' => 'Customer card successfully deleted'], JsonResponse::HTTP_OK);
-    }else{
-      return self::responseJson(['message' => 'Customer card not deleted'], JsonResponse::HTTP_BAD_REQUEST);
-    }
+    return $customerCard->delete()?
+      self::responseJson(['message' => 'Customer card successfully deleted'], JsonResponse::HTTP_OK):
+      self::responseJson(['message' => 'Customer card not deleted'], JsonResponse::HTTP_BAD_REQUEST);
   }
 }

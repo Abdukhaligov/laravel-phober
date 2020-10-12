@@ -24,11 +24,11 @@ class InstanceController extends ApiController{
       self::notFound();
   }
 
-  public function update(Request $request, $id){
+  public function update(){
     return FALSE;
   }
 
-  public function destroy($id){
+  public function destroy(){
     return FALSE;
   }
 }

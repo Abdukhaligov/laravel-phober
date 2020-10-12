@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Bar;
-use Illuminate\Http\Request;
 use App\Http\Resources\BarCollection;
 use App\Http\Resources\Bar as BarResource;
 
@@ -12,7 +11,7 @@ class BarController extends ApiController{
     return self::responseJson(new BarCollection(Bar::all()));
   }
 
-  public function store(Request $request){
+  public function store(){
     return FALSE;
   }
 
@@ -24,15 +23,15 @@ class BarController extends ApiController{
       self::notFound();
   }
 
-  public function edit(Bar $bar){
+  public function edit(){
     return FALSE;
   }
 
-  public function update(Request $request, Bar $bar){
+  public function update(){
     return FALSE;
   }
 
-  public function destroy(Bar $bar){
+  public function destroy(){
     return FALSE;
   }
 }

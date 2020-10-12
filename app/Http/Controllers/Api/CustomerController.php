@@ -41,11 +41,9 @@ class CustomerController extends ApiController{
 
     if(!$customer) return self::notFound();
 
-    if($customer->update($request->all())){
-      return self::responseJson(['message' => 'Customer successfully updated'], JsonResponse::HTTP_OK);
-    }else{
-      return self::responseJson(['message' => 'Customer not updated'], JsonResponse::HTTP_OK);
-    }
+    return $customer->update($request->all())?
+      self::responseJson(['message' => 'Customer successfully updated'], JsonResponse::HTTP_OK):
+      self::responseJson(['message' => 'Customer not updated'], JsonResponse::HTTP_OK);
   }
 
   public function destroy($id){
@@ -53,10 +51,8 @@ class CustomerController extends ApiController{
 
     if(!$customer) return self::notFound();
 
-    if($customer->delete()){
-      return self::responseJson(['message' => 'Customer successfully deleted'], JsonResponse::HTTP_OK);
-    }else{
-      return self::responseJson(['message' => 'Customer not deleted'], JsonResponse::HTTP_OK);
-    }
+    return $customer->delete()?
+      self::responseJson(['message' => 'Customer successfully deleted'], JsonResponse::HTTP_OK):
+      self::responseJson(['message' => 'Customer not deleted'], JsonResponse::HTTP_OK);
   }
 }

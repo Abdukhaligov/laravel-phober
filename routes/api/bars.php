@@ -1,3 +1,5 @@
 <?php
 
-Route::apiResource('bars', 'Api\BarController');
+Route::group(['middleware' => ['auth:api']], function(){
+  Route::apiResource('bars', 'Api\BarController');
+});

@@ -25,6 +25,9 @@ class Reservation extends Model{
   protected $fillable = [
     "full_name", "phone", "date", "player_count", "years_old", "type"
   ];
+  protected $casts = [
+    "date" => "datetime"
+  ];
   public function author(){
     return $this->belongsTo(User::class, "author_id");
   }

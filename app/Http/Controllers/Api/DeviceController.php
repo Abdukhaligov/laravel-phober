@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Resources\Device as DeviceResource;
 use App\Models\Device;
 use App\Http\Resources\DeviceCollection;
@@ -12,7 +11,7 @@ class DeviceController extends ApiController{
     return self::responseJson(new DeviceCollection(Device::all()));
   }
 
-  public function store(Request $request){
+  public function store(){
     return FALSE;
   }
 
@@ -24,11 +23,11 @@ class DeviceController extends ApiController{
       self::notFound();
   }
 
-  public function update(Request $request, $id){
+  public function update(){
     return FALSE;
   }
 
-  public function destroy($id){
+  public function destroy(){
     return FALSE;
   }
 }

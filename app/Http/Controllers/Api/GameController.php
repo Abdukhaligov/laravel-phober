@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Resources\Game as GameResource;
 use App\Http\Resources\GameCollection;
 use App\Models\Game;
@@ -12,7 +11,7 @@ class GameController extends ApiController{
     return self::responseJson(new GameCollection(Game::all()));
   }
 
-  public function store(Request $request){
+  public function store(){
     return FALSE;
   }
 
@@ -24,11 +23,11 @@ class GameController extends ApiController{
       self::notFound();
   }
 
-  public function update(Request $request, $id){
+  public function update(){
     return FALSE;
   }
 
-  public function destroy($id){
+  public function destroy(){
     return FALSE;
   }
 }
