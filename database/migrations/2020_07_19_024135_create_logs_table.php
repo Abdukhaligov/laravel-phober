@@ -4,9 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLogsTable extends Migration {
-  public function up() {
-    Schema::create('logs', function (Blueprint $table) {
+class CreateLogsTable extends Migration{
+  public function up(){
+    Schema::create('logs', function(Blueprint $table){
       $table->id();
       $table->bigInteger('loggable_id')->unsigned()->nullable();
       $table->string('loggable_type')->nullable();
@@ -20,8 +20,7 @@ class CreateLogsTable extends Migration {
     });
   }
 
-
-  public function down() {
+  public function down(){
     Schema::dropIfExists('logs');
   }
 }

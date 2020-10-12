@@ -4,15 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomersTable extends Migration {
-  public function up() {
-    Schema::create('customers', function (Blueprint $table) {
+class CreateCustomersTable extends Migration{
+  public function up(){
+    Schema::create('customers', function(Blueprint $table){
       $table->id();
       $table->string('name')->nullable();
       $table->string('surname')->nullable();
       $table->string('phone')->nullable();
       $table->string('email')->nullable();
-      $table->boolean('gender')->default(false);
+      $table->boolean('gender')->default(FALSE);
       $table->date('birthday')->nullable();
       $table->bigInteger('author_id')->unsigned()->nullable();
       $table->foreign('author_id')->references('id')->on('users')->onDelete('SET NULL');
@@ -20,7 +20,7 @@ class CreateCustomersTable extends Migration {
     });
   }
 
-  public function down() {
+  public function down(){
     Schema::dropIfExists('customers');
   }
 }
