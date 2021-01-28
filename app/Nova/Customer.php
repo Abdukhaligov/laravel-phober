@@ -3,13 +3,11 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use KirschbaumDevelopment\NovaComments\Commenter;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\HasOne;
 
 class Customer extends Resource{
   public static $model = \App\Models\Customer::class;
@@ -33,10 +31,7 @@ class Customer extends Resource{
         }),
       Date::make("Birthday"),
 
-      HasOne::make('Card', 'card', 'App\Nova\CustomerCard'),
       BelongsTo::make('Author', 'author', 'App\Nova\User'),
-
-      new Commenter(),
     ];
   }
 }

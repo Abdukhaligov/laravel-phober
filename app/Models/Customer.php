@@ -2,26 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use KirschbaumDevelopment\NovaComments\Commentable;
 use DateTime;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * @method static create(array $all)
- * @method static find($id)
  * @property int id
  * @property string name
  * @property string phone
  * @property string email
  * @property bool gender
- * @property mixed birthday
+ * @property DateTime birthday
  * @property User author
  * @property int author_id
  * @property DateTime created_at
  * @property DateTime updated_at
+ * @method static create(array $attributes)
+ * @method static find($id)
+ * @method destroyer()
  */
 class Customer extends Model{
-  use Commentable;
+  use HasFactory;
 
   protected $fillable = [
     'name', 'surname', 'email', 'gender', 'birthday', 'phone'
@@ -35,9 +36,5 @@ class Customer extends Model{
 
   public function author(){
     return $this->belongsTo(User::class, "author_id");
-  }
-
-  public function card(){
-    return $this->hasOne(CustomerCard::class, "owner_id");
   }
 }

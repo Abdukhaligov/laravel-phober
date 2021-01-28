@@ -2,14 +2,13 @@
 
 namespace App\Nova;
 
-use Digitalcloud\MultilingualNova\Multilingual;
 use Illuminate\Http\Request;
+use KirschbaumDevelopment\NovaComments\Commenter;
+use Kongulov\NovaTabTranslatable\NovaTabTranslatable;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use KirschbaumDevelopment\NovaComments\Commenter;
 
 class Device extends Resource{
   public static $model = \App\Models\Device::class;
@@ -24,16 +23,7 @@ class Device extends Resource{
       Text::make("Name")
         ->sortable(),
 
-      Textarea::make('Description')
-        ->hideFromIndex(),
-
-      Multilingual::make('Language')
-        ->setLocales([
-          'en' => 'English',
-          'ru' => 'Russian',
-          'az' => 'Azerbaijan',
-        ])
-        ->hideFromIndex(),
+      NovaTabTranslatable::make([Textarea::make(__('Description'), 'description')])->hideFromIndex(),
 
       BelongsToMany::make("Games"),
       new Commenter(),

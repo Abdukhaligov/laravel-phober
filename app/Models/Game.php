@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use DateTime;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use KirschbaumDevelopment\NovaComments\Commentable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
-use Illuminate\Database\Eloquent\Collection;
-use DateTime;
 
 /**
  * @property int id
@@ -23,12 +24,13 @@ use DateTime;
  * @property array comments
  * @property DateTime created_at
  * @property DateTime updated_at
+ * @method static create(array $attributes)
  * @method static find($id)
  * @method getTranslations(string $string)
  * @method getFirstMediaUrl(string $collectionName)
  */
 class Game extends Model implements HasMedia{
-  use HasTranslations, InteractsWithMedia, Commentable;
+  use HasFactory,InteractsWithMedia, Commentable, HasTranslations;
 
   public $translatable = ["description"];
   protected $casts = [
@@ -40,7 +42,6 @@ class Game extends Model implements HasMedia{
       ->addMediaCollection('game')
       ->useDisk('media');
   }
-
 
   public function genres(){
     return $this->belongsToMany(Genre::class, "game_genre");

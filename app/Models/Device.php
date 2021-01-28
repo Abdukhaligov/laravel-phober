@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
-use Illuminate\Database\Eloquent\Collection;
 use DateTime;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use KirschbaumDevelopment\NovaComments\Commentable;
+use Spatie\Translatable\HasTranslations;
 
 /**
  * @property int id
@@ -17,12 +18,12 @@ use KirschbaumDevelopment\NovaComments\Commentable;
  * @property array comments
  * @property DateTime created_at
  * @property DateTime updated_at
+ * @method static create(array $attributes)
  * @method static find($id)
  * @method getTranslations(string $string)
  */
 class Device extends Model{
-  use HasTranslations;
-  use Commentable;
+  use HasTranslations, Commentable;
 
   public $translatable = ['description'];
   protected $hidden = ['created_at', 'updated_at'];
