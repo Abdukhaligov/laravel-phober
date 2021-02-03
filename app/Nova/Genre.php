@@ -18,6 +18,7 @@ class Genre extends Resource{
   public function fields(Request $request){
     return [
       ID::make()->sortable(),
+
       Text::make("Name"),
 
       BelongsToMany::make("Games")

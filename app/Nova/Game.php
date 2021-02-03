@@ -26,28 +26,29 @@ class Game extends Resource{
   public function fields(Request $request){
     return [
       ID::make()->sortable(),
+
       Media::make('Image', 'game'),
+
       Text::make("Name")->sortable(),
+
       Text::make("Slug")->sortable(),
+
       Youtube::make('Video'),
-//      Rating::make('Rating')
-//        ->min(0)
-//        ->max(5)
-//        ->increment(1)
-//        ->sortable(),
+
+      //Rating::make('Rating')
+      //  ->min(0)
+      //  ->max(5)
+      //  ->increment(1)
+      //  ->sortable(),
+
       Boolean::make("Multiplayer"),
 
-      NovaTabTranslatable::make([Textarea::make(__('Description'), 'description')])->hideFromIndex(),
+      NovaTabTranslatable::make([
+        Textarea::make(__('Description'), 'description')
+      ])->hideFromIndex(),
 
-
-//      Multilingual::make('Language')
-//        ->setLocales([
-//          'en' => 'English',
-//          'ru' => 'Russian',
-//          'az' => 'Azerbaijan',
-//        ])
-//        ->hideFromIndex(),
       BelongsToMany::make("Devices"),
+
       BelongsToMany::make("Genres"),
 
       new Commenter(),

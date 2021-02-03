@@ -11,7 +11,8 @@ use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property int id
- * @property string username
+ * @property string first_name
+ * @property string last_name
  * @property string email
  * @property mixed full_name
  * @property Collection roles
@@ -23,13 +24,6 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable{
   use HasFactory, Notifiable, HasRoles;
 
-  const ROLE = [
-    "Super Admin" => 1,
-    "Admin" => 2,
-    "Manager" => 3,
-    "Cashier" => 4,
-    "Member" => 5,
-  ];
   protected $fillable = [
     'name',
     'email',
@@ -44,27 +38,27 @@ class User extends Authenticatable{
   ];
 
   public function isRoot(): bool{
-    return in_array(self::ROLE["Super Admin"],
-      (array) $this->roles->pluck('id')->toArray());
+    return in_array(Role::where("name", "Super Admin")->first()->id,
+      (array)$this->roles->pluck('id')->toArray());
   }
 
   public function isAdmin(){
-    return in_array(self::ROLE["Admin"],
-      (array) $this->roles->pluck('id')->toArray());
+    return in_array(Role::where("name", "Admin")->first()->id,
+      (array)$this->roles->pluck('id')->toArray());
   }
 
   public function isManager(){
-    return in_array(self::ROLE["Manager"],
-      (array) $this->roles->pluck('id')->toArray());
+    return in_array(Role::where("name", "Manager")->first()->id,
+      (array)$this->roles->pluck('id')->toArray());
   }
 
   public function isCashier(){
-    return in_array(self::ROLE["Cashier"],
-      (array) $this->roles->pluck('id')->toArray());
+    return in_array(Role::where("name", "Cashier")->first()->id,
+      (array)$this->roles->pluck('id')->toArray());
   }
 
   public function isMember(){
-    return in_array(self::ROLE["Member"],
-      (array) $this->roles->pluck('id')->toArray());
+    return in_array(Role::where("name", "Member")->first()->id,
+      (array)$this->roles->pluck('id')->toArray());
   }
 }
