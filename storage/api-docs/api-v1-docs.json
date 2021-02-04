@@ -11,7 +11,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost/api/v1",
+            "url": "http://127.0.0.1:80/api/v1",
             "description": "API Server"
         },
         {
@@ -20,14 +20,44 @@
         }
     ],
     "paths": {
-        "/": {
+        "/games": {
             "get": {
-                "description": "Home page",
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Get all games",
+                "operationId": "gamessIndex",
                 "responses": {
-                    "default": {
-                        "description": "Welcome page"
+                    "200": {
+                        "description": "ok"
                     }
-                }
+                },
+                "security": []
+            }
+        },
+        "/games/{id}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Get game by id",
+                "operationId": "gamesShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
             }
         },
         "/login": {
@@ -196,6 +226,42 @@
                     }
                 },
                 "security": []
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get Auth info",
+                "operationId": "authUser",
+                "responses": {
+                    "200": {
+                        "description": "Success registration",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "uuid": {
+                                            "type": "string",
+                                            "example": "1234567"
+                                        },
+                                        "token": {
+                                            "type": "string",
+                                            "example": "dN9dIyKgpGmNQX7jmKemo)"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         }
     },

@@ -7,6 +7,7 @@ use App\Http\Requests\UserRegisterRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller{
@@ -75,18 +76,19 @@ class UserController extends Controller{
         $response = (new UserResource($user))->resolve();
         $response["token"] = $token;
 
-        return response()->json($response, 200);
+        return response()->json($response, JsonResponse::HTTP_OK);
       }
       else{
         return response()->json([
           'message' => 'Credential error',
           'errors' => ['password' => ['Password is incorrect']]
-        ], 422);
+        ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
       }
     }
 
-    return response()->json(['message' => 'At least one field is required (Email or Username)'],
-      422);
+    return response()->json([
+      'message' => 'At least one field is required (Email or Username)'
+    ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
   }
 
   /**
@@ -149,6 +151,29 @@ class UserController extends Controller{
 
     $token = $user->createToken('phober-api')->accessToken;
 
-    return response()->json(['token' => $token], 200);
+    return response()->json(['token' => $token], JsonResponse::HTTP_OK);
+  }
+
+  /**
+   * @OA\Get(
+   *   path="/user",
+   *   summary="Get Auth info",
+   *   operationId="authUser",
+   *   tags={"Auth"},
+   *   security={{"bearer_token": {}}},
+   *   @OA\Response(
+   *     response=200,
+   *     description="Success registration",
+   *     @OA\JsonContent(
+   *       @OA\Property(property="uuid", type="string", example="1234567"),
+   *       @OA\Property(property="token", type="string", example="dN9dIyKgpGmNQX7jmKemo)")
+   *     )
+   *   )
+   * )
+   * @param  Request  $request
+   * @return mixed
+   */
+  public function user(Request $request){
+    return $request->user();
   }
 }

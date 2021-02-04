@@ -25,7 +25,7 @@ class RouteServiceProvider extends ServiceProvider{
 
     $this->mapApiRoutes();
 
-    $this->routes(function(){
+    $this->routes(function (){
       Route::middleware('web')
         ->group(base_path('routes/web.php'));
     });
@@ -37,16 +37,14 @@ class RouteServiceProvider extends ServiceProvider{
    * @return void
    */
   protected function mapApiRoutes(){
-    Route::prefix('api')->group(function(){
-      Route::get('/', function(){
+    Route::prefix('api')->middleware(['forceJson', 'api'])->group(function (){
+      Route::get('/', function (){
         return response()->json([
           "info" => config('api.info'), "version" => config('api.version')
         ]);
       });
 
-      Route::prefix('v1')
-        ->middleware(['api'])
-        ->group(base_path('routes/api/v1.php'));
+      Route::prefix('v1')->group(base_path('routes/api/v1.php'));
     });
   }
 
@@ -55,8 +53,8 @@ class RouteServiceProvider extends ServiceProvider{
    * @return void
    */
   protected function configureRateLimiting(){
-    RateLimiter::for('api', function(Request $request){
-      return Limit::perMinute(60)->by(optional($request->user())->id?: $request->ip());
+    RateLimiter::for('api', function (Request $request){
+      return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
     });
   }
 }

@@ -23,14 +23,6 @@ use App\Http\Controllers\Api\Controller as BaseController;
  *      description="localhost"
  * )
  */
-
-/**
- * @OA\Get(
- *     path="/",
- *     description="Home page",
- *     @OA\Response(response="default", description="Welcome page")
- * )
- */
 class Controller extends BaseController{
   //
 }
