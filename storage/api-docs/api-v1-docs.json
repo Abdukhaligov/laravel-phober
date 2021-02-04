@@ -20,13 +20,28 @@
         }
     ],
     "paths": {
+        "/device-instances": {
+            "get": {
+                "tags": [
+                    "Device Instances"
+                ],
+                "summary": "Get all device instances",
+                "operationId": "deviceInstanceIndex",
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
         "/games": {
             "get": {
                 "tags": [
                     "Games"
                 ],
                 "summary": "Get all games",
-                "operationId": "gamessIndex",
+                "operationId": "gamesIndex",
                 "responses": {
                     "200": {
                         "description": "ok"

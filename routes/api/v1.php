@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\DeviceInstanceController;
 use App\Http\Controllers\Api\V1\GameController;
 use App\Http\Controllers\Api\V1\UserController;
 use Illuminate\Support\Facades\Route;
@@ -19,4 +20,7 @@ Route::prefix('games')->group(function (){
   Route::get('findByRating/{value}', [GameController::class, 'findByRating']);
 });
 
+Route::prefix('device-instances')->group(function (){
+  Route::get('/', [DeviceInstanceController::class, 'index']);
+});
 

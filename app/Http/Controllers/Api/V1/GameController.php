@@ -14,7 +14,7 @@ class GameController extends Controller{
    * @OA\Get(
    *   path="/games",
    *   summary="Get all games",
-   *   operationId="gamessIndex",
+   *   operationId="gamesIndex",
    *   tags={"Games"},
    *   security={},
    *   @OA\Response(
