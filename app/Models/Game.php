@@ -12,7 +12,6 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
 
 /**
- * @property int id
  * @property string name
  * @property string slug
  * @property int rating
@@ -22,20 +21,12 @@ use Spatie\Translatable\HasTranslations;
  * @property Collection games
  * @property Collection devices
  * @property array comments
- * @property DateTime created_at
- * @property DateTime updated_at
- * @method static create(array $attributes)
- * @method static find($id)
- * @method getTranslations(string $string)
- * @method getFirstMediaUrl(string $collectionName)
  */
 class Game extends Model implements HasMedia{
-  use HasFactory,InteractsWithMedia, Commentable, HasTranslations;
+  use ModelTrait, HasFactory, InteractsWithMedia, Commentable, HasTranslations;
 
   public $translatable = ["description"];
-  protected $casts = [
-    "multiplayer" => "boolean"
-  ];
+  protected $casts = ["multiplayer" => "boolean"];
 
   public function registerMediaCollections(): void{
     $this

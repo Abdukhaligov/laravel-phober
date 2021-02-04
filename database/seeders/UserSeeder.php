@@ -31,7 +31,5 @@ class UserSeeder extends Seeder{
       "email" => "member@site.com",
       "password" => bcrypt(123456)
     ]);
-
-    User::find(1)->assignRole('super admin');
   }
 }

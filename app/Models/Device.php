@@ -10,20 +10,14 @@ use KirschbaumDevelopment\NovaComments\Commentable;
 use Spatie\Translatable\HasTranslations;
 
 /**
- * @property int id
  * @property string name
  * @property string slug
  * @property string description
  * @property Collection games
  * @property array comments
- * @property DateTime created_at
- * @property DateTime updated_at
- * @method static create(array $attributes)
- * @method static find($id)
- * @method getTranslations(string $string)
  */
 class Device extends Model{
-  use HasTranslations, Commentable;
+  use ModelTrait, HasTranslations, Commentable;
 
   public $translatable = ['description'];
   protected $hidden = ['created_at', 'updated_at'];
