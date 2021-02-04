@@ -46,7 +46,82 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "required": false,
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/games/findByGenre/{id}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Find games by genre id",
+                "operationId": "gamesFindByGenre",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/games/findByDevice/{id}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Find games by device id",
+                "operationId": "gamesFindByDevice",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/games/findByRating/{rating}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Find games by rating",
+                "operationId": "gamesFindByRating",
+                "parameters": [
+                    {
+                        "name": "rating",
+                        "in": "path",
+                        "required": true,
                         "schema": {
                             "type": "integer"
                         }

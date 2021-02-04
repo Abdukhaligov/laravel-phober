@@ -14,6 +14,9 @@ Route::middleware('auth:api')->group(function (){
 Route::prefix('games')->group(function (){
   Route::get('/', [GameController::class, 'index']);
   Route::get('{id}', [GameController::class, 'show']);
+  Route::get('findByGenre/{id}', [GameController::class, 'findByGenre']);
+  Route::get('findByDevice/{id}', [GameController::class, 'findByDevice']);
+  Route::get('findByRating/{value}', [GameController::class, 'findByRating']);
 });
 
 
