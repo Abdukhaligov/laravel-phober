@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\CustomerController;
 use App\Http\Controllers\Api\V1\DeviceController;
 use App\Http\Controllers\Api\V1\DeviceInstanceController;
 use App\Http\Controllers\Api\V1\GameController;
@@ -29,5 +30,10 @@ Route::prefix('devices')->group(function (){
 Route::prefix('device-instances')->group(function (){
   Route::get('/', [DeviceInstanceController::class, 'index']);
   Route::get('{id}', [DeviceInstanceController::class, 'show']);
+});
+
+Route::prefix('customers')->group(function (){
+  Route::get('/', [CustomerController::class, 'index']);
+  Route::get('{id}', [CustomerController::class, 'show']);
 });
 

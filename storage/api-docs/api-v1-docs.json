@@ -224,6 +224,46 @@
                 ]
             }
         },
+        "/customers": {
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get all customers",
+                "operationId": "customersIndex",
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/customers/{id}": {
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get customer by id",
+                "operationId": "customersShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
         "/devices": {
             "get": {
                 "tags": [

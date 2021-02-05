@@ -2,26 +2,28 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\Customer;
 use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource{
+class CustomerResource extends JsonResource{
   /**
    * Transform the resource into an array.
    * @param  Request  $request
    * @return array
    */
   public function toArray($request){
-    /** @var User $this */
+    /** @var Customer $this */
     return [
       "id" => $this->id,
-      "username" => $this->username,
       "firstName" => $this->first_name,
       "lastName" => $this->last_name,
+      "phone" => $this->phone,
       "email" => $this->email,
-      "created_at" => $this->created_at,
-      "updated_at" => $this->updated_at,
+      "gender" => $this->gender ? "Male" : "Female",
+      "birthday" => $this->birthday,
+      "age" => $this->getAge(),
+      "nextBirthday" => $this->getNextBirthday(),
     ];
   }
 }

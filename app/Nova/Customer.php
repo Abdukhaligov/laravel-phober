@@ -21,7 +21,11 @@ class Customer extends Resource{
     return [
       ID::make()->sortable(),
 
-      Text::make('Name')
+      Text::make('First Name', 'first_name')
+        ->sortable()
+        ->rules('required', 'max:255'),
+
+      Text::make('Last Name', 'last_name')
         ->sortable()
         ->rules('required', 'max:255'),
 
@@ -29,14 +33,15 @@ class Customer extends Resource{
         ->sortable(),
 
       Select::make("Gender")
-        ->options(["1" => "Male", "0" => "Female"])
+        ->options([true => "Male", false => "Female"])
         ->displayUsing(function($gender){
           return $gender? "Male": "Female";
         }),
 
       Date::make("Birthday"),
 
-      BelongsTo::make('Author', 'author', 'App\Nova\User'),
+      BelongsTo::make('Author', 'author', User::class)
+        ->onlyOnDetail(),
 
       new Commenter(),
     ];

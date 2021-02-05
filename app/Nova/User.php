@@ -7,14 +7,13 @@ use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\MorphToMany;
-use App\Tools\NovaPermissionTool\Role;
-use App\Tools\NovaPermissionTool\Permission;
 
 class User extends Resource{
   public static $model = \App\Models\User::class;
-  public static $title = 'full_name';
-  public static $search = ['id', 'username', 'full_name', 'email',];
+  public static $title = 'username';
+  public static $search = [
+    'id', 'username', 'first_name', 'last_name', 'email',
+  ];
 
   public function fields(Request $request){
     return [
@@ -26,11 +25,11 @@ class User extends Resource{
         ->sortable()
         ->rules('required', 'max:255'),
 
-      Text::make('Name')
+      Text::make('First_name')
         ->sortable()
         ->rules('required', 'max:255'),
 
-      Text::make('Last Name', 'last_name')
+      Text::make('Last_name')
         ->sortable()
         ->rules('required', 'max:255'),
 
@@ -44,9 +43,6 @@ class User extends Resource{
         ->onlyOnForms()
         ->creationRules('required', 'string', 'min:8')
         ->updateRules('nullable', 'string', 'min:8'),
-
-      MorphToMany::make('Roles', 'roles', Role::class),
-      MorphToMany::make('Permissions', 'permissions', Permission::class),
     ];
   }
 }

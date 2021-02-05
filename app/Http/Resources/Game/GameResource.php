@@ -22,8 +22,8 @@ class GameResource extends JsonResource{
       $comments = array(
         "comment" => $comment->comment,
         "author" => $comment->commenter->username,
-        "author_email" => $comment->commenter->email,
-        "date" => date('h:m:s d-m-Y', strtotime($comment->created_at))
+        "authorEmail" => $comment->commenter->email,
+        "date" => $comment->created_at
       );
     }
 

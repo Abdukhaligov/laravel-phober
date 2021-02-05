@@ -27,6 +27,7 @@ class DeviceInstance extends Model{
     'deactivation_end' => 'datetime',
   ];
   protected $fillable = ["device_id"];
+  protected $with = ["device"];
 
   public function device(){
     return $this->belongsTo(Device::class);
