@@ -2,7 +2,6 @@
 /node_modules
 /public/hot
 /public/docs-v1
-/public/storage
 /storage/*.key
 /vendor
 .env
@@ -14,9 +13,5 @@ npm-debug.log
 yarn-error.log
 .phpstorm.meta.php
 _ide_helper.php
-!/.phpstorm.meta.php
-!/_ide_helper.php
-.phpstorm.meta.php
-.phpstorm.meta.php
 composer.phar
 .rnd

@@ -20,6 +20,7 @@ use Spatie\Translatable\HasTranslations;
  * @property string description
  * @property Collection games
  * @property Collection devices
+ * @property Collection genres
  * @property array comments
  */
 class Game extends Model implements HasMedia{
