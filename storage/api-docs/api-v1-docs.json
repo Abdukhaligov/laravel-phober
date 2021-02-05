@@ -20,201 +20,6 @@
         }
     ],
     "paths": {
-        "/devices": {
-            "get": {
-                "tags": [
-                    "Devices"
-                ],
-                "summary": "Get all devices",
-                "operationId": "devicesIndex",
-                "responses": {
-                    "200": {
-                        "description": "ok"
-                    }
-                },
-                "security": []
-            }
-        },
-        "/devices/{id}": {
-            "get": {
-                "tags": [
-                    "Devices"
-                ],
-                "summary": "Get device by id",
-                "operationId": "devicesShow",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "ok"
-                    }
-                },
-                "security": []
-            }
-        },
-        "/device-instances": {
-            "get": {
-                "tags": [
-                    "Device Instances"
-                ],
-                "summary": "Get all device instances",
-                "operationId": "deviceInstancesIndex",
-                "responses": {
-                    "200": {
-                        "description": "ok"
-                    }
-                },
-                "security": []
-            }
-        },
-        "/device-instances/{id}": {
-            "get": {
-                "tags": [
-                    "Device Instances"
-                ],
-                "summary": "Get device instance by id",
-                "operationId": "deviceInstancesShow",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "ok"
-                    }
-                },
-                "security": []
-            }
-        },
-        "/games": {
-            "get": {
-                "tags": [
-                    "Games"
-                ],
-                "summary": "Get all games",
-                "operationId": "gamesIndex",
-                "responses": {
-                    "200": {
-                        "description": "ok"
-                    }
-                },
-                "security": []
-            }
-        },
-        "/games/{id}": {
-            "get": {
-                "tags": [
-                    "Games"
-                ],
-                "summary": "Get game by id",
-                "operationId": "gamesShow",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "ok"
-                    }
-                },
-                "security": []
-            }
-        },
-        "/games/findByGenre/{id}": {
-            "get": {
-                "tags": [
-                    "Games"
-                ],
-                "summary": "Find games by genre id",
-                "operationId": "gamesFindByGenre",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "ok"
-                    }
-                },
-                "security": []
-            }
-        },
-        "/games/findByDevice/{id}": {
-            "get": {
-                "tags": [
-                    "Games"
-                ],
-                "summary": "Find games by device id",
-                "operationId": "gamesFindByDevice",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "ok"
-                    }
-                },
-                "security": []
-            }
-        },
-        "/games/findByRating/{rating}": {
-            "get": {
-                "tags": [
-                    "Games"
-                ],
-                "summary": "Find games by rating",
-                "operationId": "gamesFindByRating",
-                "parameters": [
-                    {
-                        "name": "rating",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "ok"
-                    }
-                },
-                "security": []
-            }
-        },
         "/login": {
             "post": {
                 "tags": [
@@ -417,6 +222,201 @@
                         "bearer_token": []
                     }
                 ]
+            }
+        },
+        "/devices": {
+            "get": {
+                "tags": [
+                    "Devices"
+                ],
+                "summary": "Get all devices",
+                "operationId": "devicesIndex",
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/devices/{id}": {
+            "get": {
+                "tags": [
+                    "Devices"
+                ],
+                "summary": "Get device by id",
+                "operationId": "devicesShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/device-instances": {
+            "get": {
+                "tags": [
+                    "Device Instances"
+                ],
+                "summary": "Get all device instances",
+                "operationId": "deviceInstancesIndex",
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/device-instances/{id}": {
+            "get": {
+                "tags": [
+                    "Device Instances"
+                ],
+                "summary": "Get device instance by id",
+                "operationId": "deviceInstancesShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/games": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Get all games",
+                "operationId": "gamesIndex",
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/games/{id}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Get game by id",
+                "operationId": "gamesShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/games/findByGenre/{id}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Find games by genre id",
+                "operationId": "gamesFindByGenre",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/games/findByDevice/{id}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Find games by device id",
+                "operationId": "gamesFindByDevice",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/games/findByRating/{rating}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Find games by rating",
+                "operationId": "gamesFindByRating",
+                "parameters": [
+                    {
+                        "name": "rating",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
             }
         }
     },

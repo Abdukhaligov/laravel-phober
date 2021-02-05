@@ -94,7 +94,7 @@ class GameController extends Controller{
 
     if (!$genre) return self::responseNotFound("Genre");
 
-    $games = (new GameResourceCollection($genre->games))->resolve();
+    $games = (new GameMinimalResourceCollection($genre->games))->resolve();
 
     return self::responseSuccess($games);
   }
@@ -129,7 +129,7 @@ class GameController extends Controller{
 
     if (!$genre) return self::responseNotFound("Device");
 
-    $games = (new GameResourceCollection($genre->games))->resolve();
+    $games = (new GameMinimalResourceCollection($genre->games))->resolve();
 
     return self::responseSuccess($games);
   }
@@ -159,7 +159,7 @@ class GameController extends Controller{
    * @return JsonResponse
    */
   public function findByRating($value){
-    $games = (new GameResourceCollection(Game::where("rating", $value)->get()))->resolve();
+    $games = (new GameMinimalResourceCollection(Game::where("rating", $value)->get()))->resolve();
 
     return self::responseSuccess($games);
   }

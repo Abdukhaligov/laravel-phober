@@ -28,8 +28,8 @@ class CustomerFactory extends Factory{
     case(4):$number = '77';break;}
 
     return [
-      'name' => $this->faker->name,
-      'surname' => $this->faker->lastName,
+      'first_name' => $this->faker->firstName,
+      'last_name' => $this->faker->lastName,
       'gender' => (boolean) rand(0, 1),
       'phone' => '994'.$number.rand(221, 795).rand(21, 98).rand(10, 85),
       'email' => (boolean) rand(0, 1) ? $this->faker->email : null,

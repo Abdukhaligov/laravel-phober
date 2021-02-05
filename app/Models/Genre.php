@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property Collection games
+ * @property string name
  */
 class Genre extends Model{
   use ModelTrait, HasFactory;

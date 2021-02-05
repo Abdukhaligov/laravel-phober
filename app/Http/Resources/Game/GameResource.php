@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Game;
 
 use App\Http\Resources\Device\DeviceMinimalResourceCollection;
+use App\Http\Resources\Genre\GenreResourceCollection;
 use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -35,6 +36,7 @@ class GameResource extends JsonResource{
       "rating" => $this->rating,
       "multiplayer" => $this->multiplayer,
       "devices" => new DeviceMinimalResourceCollection($this->devices),
+      "genres" => new GenreResourceCollection($this->genres),
       "description" => $this->getTranslations('description'),
       "comments" => $comments
     ];
