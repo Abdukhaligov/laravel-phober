@@ -10,10 +10,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 
-Route::middleware('auth:api')->group(function (){
-  Route::get('user', [AuthController::class, 'user']);
-});
-
 Route::prefix('games')->group(function (){
   Route::get('/', [GameController::class, 'index']);
   Route::get('{id}', [GameController::class, 'show']);
@@ -32,8 +28,11 @@ Route::prefix('device-instances')->group(function (){
   Route::get('{id}', [DeviceInstanceController::class, 'show']);
 });
 
-Route::prefix('customers')->group(function (){
-  Route::get('/', [CustomerController::class, 'index']);
-  Route::get('{id}', [CustomerController::class, 'show']);
-});
+Route::middleware('auth:api')->group(function (){
+  Route::get('user', [AuthController::class, 'user']);
 
+  Route::prefix('customers')->group(function (){
+    Route::get('/', [CustomerController::class, 'index']);
+    Route::get('{id}', [CustomerController::class, 'show']);
+  });
+});

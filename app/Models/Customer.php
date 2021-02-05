@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property string first_name
  * @property string last_name
+ * @property string full_name
  * @property string phone
  * @property string email
  * @property bool gender
@@ -37,6 +38,10 @@ class Customer extends Model{
     $now = new DateTime();
 
     return ($now->diff(($this->birthday)))->y;
+  }
+
+  public function getFullNameAttribute(){
+    return ucfirst($this->first_name).' '.ucfirst($this->last_name);
   }
 
   public function getNextBirthday(): int|bool{

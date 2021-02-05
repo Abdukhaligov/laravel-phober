@@ -12,10 +12,16 @@ use KirschbaumDevelopment\NovaComments\Commenter;
 
 class Customer extends Resource{
   public static $model = \App\Models\Customer::class;
-  public static $title = 'name';
+  public static $title = 'first_name';
+  public static $group = "CRM";
   public static $search = [
-    'id', 'name', 'email',
+    'id', 'first_name', 'last_name', 'email',
   ];
+
+  public function title(){
+    /** @var \App\Models\Customer $this */
+    return $this->full_name;
+  }
 
   public function fields(Request $request){
     return [
@@ -34,8 +40,8 @@ class Customer extends Resource{
 
       Select::make("Gender")
         ->options([true => "Male", false => "Female"])
-        ->displayUsing(function($gender){
-          return $gender? "Male": "Female";
+        ->displayUsing(function ($gender){
+          return $gender ? "Male" : "Female";
         }),
 
       Date::make("Birthday"),

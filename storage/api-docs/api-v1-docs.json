@@ -236,7 +236,11 @@
                         "description": "ok"
                     }
                 },
-                "security": []
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/customers/{id}": {
@@ -261,7 +265,11 @@
                         "description": "ok"
                     }
                 },
-                "security": []
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/devices": {

@@ -13,7 +13,10 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 class DeviceInstance extends Resource{
   public static $model = \App\Models\DeviceInstance::class;
   public static $title = 'id';
-  public static $search = ['id',];
+  public static $group = "Games & Devices";
+  public static $search = [
+    'id'
+  ];
 
   public function fields(Request $request){
     return [

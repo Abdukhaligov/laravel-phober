@@ -13,6 +13,7 @@ use Laravel\Nova\Fields\Textarea;
 class Device extends Resource{
   public static $model = \App\Models\Device::class;
   public static $title = 'name';
+  public static $group = "Games & Devices";
   public static $search = [
     'id', 'name'
   ];

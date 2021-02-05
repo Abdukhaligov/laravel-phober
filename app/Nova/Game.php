@@ -19,6 +19,7 @@ use Nikaia\Rating\Rating;
 class Game extends Resource{
   public static $model = \App\Models\Game::class;
   public static $title = 'name';
+  public static $group = "Games & Devices";
   public static $search = [
     'id', 'name', 'slug', 'description'
   ];

@@ -14,7 +14,7 @@ class CustomerController extends Controller{
    *   summary="Get all customers",
    *   operationId="customersIndex",
    *   tags={"Customers"},
-   *   security={},
+   *   security={{"bearer_token": {}}},
    *   @OA\Response(
    *     response="200",
    *     description="ok",
@@ -35,7 +35,7 @@ class CustomerController extends Controller{
    *   summary="Get customer by id",
    *   operationId="customersShow",
    *   tags={"Customers"},
-   *   security={},
+   *   security={{"bearer_token": {}}},
    *   @OA\Parameter(
    *     name="id",
    *     in="path",

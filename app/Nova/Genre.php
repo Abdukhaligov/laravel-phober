@@ -11,6 +11,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 class Genre extends Resource{
   public static $model = \App\Models\Genre::class;
   public static $title = 'name';
+  public static $group = "Games & Devices";
   public static $search = [
     'id', 'name',
   ];
