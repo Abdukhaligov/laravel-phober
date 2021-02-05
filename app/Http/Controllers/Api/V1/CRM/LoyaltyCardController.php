@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api\V1\CRM;
 
-use App\Http\Resources\CRM\CustomerResource;
-use App\Http\Resources\CRM\LoyaltyCardMinimalResource;
+use App\Http\Controllers\Api\V1\Controller;
 use App\Http\Resources\CRM\LoyaltyCardMinimalResourceCollection;
 use App\Http\Resources\CRM\LoyaltyCardResource;
 use App\Models\Cards\LoyaltyCard;
@@ -12,7 +11,7 @@ use Illuminate\Http\JsonResponse;
 class LoyaltyCardController extends Controller{
   /**
    * @OA\Get(
-   *   path="/loyalty-cards",
+   *   path="/crm/loyalty-cards",
    *   summary="Get all loyalty cards",
    *   operationId="loyaltyCardsIndex",
    *   tags={"CRM"},
@@ -33,7 +32,7 @@ class LoyaltyCardController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/loyalty-cards/{id}",
+   *   path="/crm/loyalty-cards/findById/{id}",
    *   summary="Get loyalty card by id",
    *   operationId="loyaltyCardsShow",
    *   tags={"CRM"},

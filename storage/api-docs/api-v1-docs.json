@@ -224,7 +224,7 @@
                 ]
             }
         },
-        "/customers": {
+        "/crm/customers": {
             "get": {
                 "tags": [
                     "CRM"
@@ -243,13 +243,61 @@
                 ]
             }
         },
-        "/customers/{id}": {
+        "/crm/customers/findById/{id}": {
             "get": {
                 "tags": [
                     "CRM"
                 ],
                 "summary": "Get customer by id",
                 "operationId": "customersShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/crm/loyalty-cards": {
+            "get": {
+                "tags": [
+                    "CRM"
+                ],
+                "summary": "Get all loyalty cards",
+                "operationId": "loyaltyCardsIndex",
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/crm/loyalty-cards/findById/{id}": {
+            "get": {
+                "tags": [
+                    "CRM"
+                ],
+                "summary": "Get loyalty card by id",
+                "operationId": "loyaltyCardsShow",
                 "parameters": [
                     {
                         "name": "id",
@@ -287,7 +335,7 @@
                 "security": []
             }
         },
-        "/devices/{id}": {
+        "/devices/findById/{id}": {
             "get": {
                 "tags": [
                     "Devices"
@@ -327,7 +375,7 @@
                 "security": []
             }
         },
-        "/device-instances/{id}": {
+        "/device-instances/findById/{id}": {
             "get": {
                 "tags": [
                     "Device Instances"
@@ -367,7 +415,7 @@
                 "security": []
             }
         },
-        "/games/{id}": {
+        "/games/findById/{id}": {
             "get": {
                 "tags": [
                     "Games"
@@ -465,54 +513,6 @@
                     }
                 },
                 "security": []
-            }
-        },
-        "/loyalty-cards": {
-            "get": {
-                "tags": [
-                    "CRM"
-                ],
-                "summary": "Get all loyalty cards",
-                "operationId": "loyaltyCardsIndex",
-                "responses": {
-                    "200": {
-                        "description": "ok"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer_token": []
-                    }
-                ]
-            }
-        },
-        "/loyalty-cards/{id}": {
-            "get": {
-                "tags": [
-                    "CRM"
-                ],
-                "summary": "Get loyalty card by id",
-                "operationId": "loyaltyCardsShow",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "ok"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer_token": []
-                    }
-                ]
             }
         }
     },

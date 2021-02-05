@@ -33,7 +33,7 @@ class GameController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/games/{id}",
+   *   path="/games/findById/{id}",
    *   summary="Get game by id",
    *   operationId="gamesShow",
    *   tags={"Games"},

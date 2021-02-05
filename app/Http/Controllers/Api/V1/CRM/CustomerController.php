@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api\V1\CRM;
 
+use App\Http\Controllers\Api\V1\Controller;
 use App\Http\Resources\CRM\CustomerResource;
 use App\Http\Resources\CRM\CustomerResourceCollection;
 use App\Models\Customer;
@@ -10,7 +11,7 @@ use Illuminate\Http\JsonResponse;
 class CustomerController extends Controller{
   /**
    * @OA\Get(
-   *   path="/customers",
+   *   path="/crm/customers",
    *   summary="Get all customers",
    *   operationId="customersIndex",
    *   tags={"CRM"},
@@ -31,7 +32,7 @@ class CustomerController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/customers/{id}",
+   *   path="/crm/customers/findById/{id}",
    *   summary="Get customer by id",
    *   operationId="customersShow",
    *   tags={"CRM"},
