@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\DeviceInstanceResourceCollection;
 use App\Models\DeviceInstance;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class DeviceInstanceController extends Controller{
@@ -20,9 +22,9 @@ class DeviceInstanceController extends Controller{
    *   )
    * )
    *
-   * @return DeviceInstance[]|\Illuminate\Database\Eloquent\Collection
+   * @return array
    */
   public function index(){
-    return DeviceInstance::all();
+    return (new DeviceInstanceResourceCollection(DeviceInstance::all()))->resolve();
   }
 }

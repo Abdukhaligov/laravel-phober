@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder{
       GameGenreSeeder::class,
       DeviceSeeder::class,
       GameDeviceSeeder::class,
-      InstanceSeeder::class,
+      DeviceInstanceSeeder::class,
 
       MediaSeeder::class,
 

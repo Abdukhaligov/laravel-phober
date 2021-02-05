@@ -9,7 +9,7 @@ class CreateGameSessionsTable extends Migration{
     Schema::create('game_sessions', function(Blueprint $table){
       $table->id();
       $table->bigInteger('customer_id')->unsigned()->nullable();
-      $table->bigInteger('instance_id')->unsigned()->nullable();
+      $table->bigInteger('device_instance_id')->unsigned()->nullable();
       $table->bigInteger('user_id')->unsigned()->nullable();
       $table->bigInteger('author_id')->unsigned()->nullable();
 
@@ -20,7 +20,7 @@ class CreateGameSessionsTable extends Migration{
       $table->foreign('customer_id')->references('id')->on('customers')->onDelete('SET NULL');
       $table->foreign('author_id')->references('id')->on('users')->onDelete('SET NULL');
       $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
-      $table->foreign('instance_id')->references('id')->on('instances')->onDelete('SET NULL');
+      $table->foreign('device_instance_id')->references('id')->on('device_instances')->onDelete('SET NULL');
       $table->timestamps();
     });
   }
