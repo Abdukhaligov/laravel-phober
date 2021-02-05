@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Resources\GameResource;
-use App\Http\Resources\GameResourceCollection;
+use App\Http\Resources\Game\GameMinimalResourceCollection;
+use App\Http\Resources\Game\GameResource;
+use App\Http\Resources\Game\GameResourceCollection;
 use App\Models\Device;
 use App\Models\Game;
 use App\Models\Genre;
@@ -23,10 +24,12 @@ class GameController extends Controller{
    *   )
    * )
    *
-   * @return GameResourceCollection
+   * @return JsonResponse
    */
   public function index(){
-    return new GameResourceCollection(Game::all());
+    $games = (new GameMinimalResourceCollection(Game::all()))->resolve();
+
+    return self::responseSuccess($games);
   }
 
   /**

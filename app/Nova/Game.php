@@ -27,7 +27,7 @@ class Game extends Resource{
     return [
       ID::make()->sortable(),
 
-      Media::make('Image', 'game'),
+      Media::make('Preview', 'preview'),
 
       Text::make("Name")->sortable(),
 
@@ -35,11 +35,11 @@ class Game extends Resource{
 
       Youtube::make('Video'),
 
-      //Rating::make('Rating')
-      //  ->min(0)
-      //  ->max(5)
-      //  ->increment(1)
-      //  ->sortable(),
+      Rating::make('Rating')
+        ->min(0)
+        ->max(5)
+        ->increment(1)
+        ->sortable(),
 
       Boolean::make("Multiplayer"),
 

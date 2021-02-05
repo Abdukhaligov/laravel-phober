@@ -27,10 +27,11 @@ class Game extends Model implements HasMedia{
 
   public $translatable = ["description"];
   protected $casts = ["multiplayer" => "boolean"];
+  protected $with = ["media"];
 
   public function registerMediaCollections(): void{
     $this
-      ->addMediaCollection('game')
+      ->addMediaCollection('preview')
       ->useDisk('media');
   }
 

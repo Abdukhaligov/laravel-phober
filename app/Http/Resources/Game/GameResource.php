@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Game;
 
+use App\Http\Resources\Device\DeviceMinimalResourceCollection;
 use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -30,7 +31,7 @@ class GameResource extends JsonResource{
       "name" => $this->name,
       "slug" => $this->slug,
       "video" => "https://www.youtube.com/watch?v=".$this->video,
-      "image" => $this->getFirstMediaUrl('game'),
+      "preview" => $this->getFirstMediaUrl('preview'),
       "rating" => $this->rating,
       "multiplayer" => $this->multiplayer,
       "devices" => new DeviceMinimalResourceCollection($this->devices),

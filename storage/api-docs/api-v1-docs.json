@@ -35,6 +35,31 @@
                 "security": []
             }
         },
+        "/device-instances/{id}": {
+            "get": {
+                "tags": [
+                    "Device Instances"
+                ],
+                "summary": "Get device instance by id",
+                "operationId": "deviceInstanceShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
         "/games": {
             "get": {
                 "tags": [

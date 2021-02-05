@@ -22,5 +22,6 @@ Route::prefix('games')->group(function (){
 
 Route::prefix('device-instances')->group(function (){
   Route::get('/', [DeviceInstanceController::class, 'index']);
+  Route::get('{id}', [DeviceInstanceController::class, 'show']);
 });
 

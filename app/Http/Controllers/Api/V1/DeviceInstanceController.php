@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\DeviceInstanceResourceCollection;
+use App\Http\Resources\Device\DeviceInstanceResource;
+use App\Http\Resources\Device\DeviceInstanceResourceCollection;
 use App\Models\DeviceInstance;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class DeviceInstanceController extends Controller{
   /**
@@ -22,9 +21,43 @@ class DeviceInstanceController extends Controller{
    *   )
    * )
    *
-   * @return array
+   * @return JsonResponse
    */
   public function index(){
-    return (new DeviceInstanceResourceCollection(DeviceInstance::all()))->resolve();
+    $deviceInstances = (new DeviceInstanceResourceCollection(DeviceInstance::all()))->resolve();
+
+    return self::responseSuccess($deviceInstances);
+  }
+
+  /**
+   * @OA\Get(
+   *   path="/device-instances/{id}",
+   *   summary="Get device instance by id",
+   *   operationId="deviceInstanceShow",
+   *   tags={"Device Instances"},
+   *   security={},
+   *   @OA\Parameter(
+   *     name="id",
+   *     in="path",
+   *     required=true,
+   *     @OA\Schema(
+   *       type="integer"
+   *     )
+   *   ),
+   *   @OA\Response(
+   *     response="200",
+   *     description="ok",
+   *   )
+   * )
+   *
+   * @param $id
+   * @return JsonResponse
+   */
+  public function show($id){
+    $deviceInstance = DeviceInstance::find($id);
+
+    return $deviceInstance
+      ? self::responseSuccess(new DeviceInstanceResource($deviceInstance))
+      : self::responseNotFound('Device Instance');
   }
 }
