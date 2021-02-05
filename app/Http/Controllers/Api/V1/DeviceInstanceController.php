@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Resources\Device\DeviceInstanceResource;
-use App\Http\Resources\Device\DeviceInstanceResourceCollection;
+use App\Http\Resources\Device\Instance\DeviceInstanceResource;
+use App\Http\Resources\Device\Instance\DeviceInstanceResourceCollection;
 use App\Models\DeviceInstance;
 use Illuminate\Http\JsonResponse;
 
@@ -12,7 +12,7 @@ class DeviceInstanceController extends Controller{
    * @OA\Get(
    *   path="/device-instances",
    *   summary="Get all device instances",
-   *   operationId="deviceInstanceIndex",
+   *   operationId="deviceInstancesIndex",
    *   tags={"Device Instances"},
    *   security={},
    *   @OA\Response(
@@ -33,7 +33,7 @@ class DeviceInstanceController extends Controller{
    * @OA\Get(
    *   path="/device-instances/{id}",
    *   summary="Get device instance by id",
-   *   operationId="deviceInstanceShow",
+   *   operationId="deviceInstancesShow",
    *   tags={"Device Instances"},
    *   security={},
    *   @OA\Parameter(

@@ -20,13 +20,53 @@
         }
     ],
     "paths": {
+        "/devices": {
+            "get": {
+                "tags": [
+                    "Devices"
+                ],
+                "summary": "Get all devices",
+                "operationId": "devicesIndex",
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/devices/{id}": {
+            "get": {
+                "tags": [
+                    "Devices"
+                ],
+                "summary": "Get device by id",
+                "operationId": "devicesShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": []
+            }
+        },
         "/device-instances": {
             "get": {
                 "tags": [
                     "Device Instances"
                 ],
                 "summary": "Get all device instances",
-                "operationId": "deviceInstanceIndex",
+                "operationId": "deviceInstancesIndex",
                 "responses": {
                     "200": {
                         "description": "ok"
@@ -41,7 +81,7 @@
                     "Device Instances"
                 ],
                 "summary": "Get device instance by id",
-                "operationId": "deviceInstanceShow",
+                "operationId": "deviceInstancesShow",
                 "parameters": [
                     {
                         "name": "id",

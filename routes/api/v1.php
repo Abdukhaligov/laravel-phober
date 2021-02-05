@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\DeviceController;
 use App\Http\Controllers\Api\V1\DeviceInstanceController;
 use App\Http\Controllers\Api\V1\GameController;
 use App\Http\Controllers\Api\V1\UserController;
@@ -18,6 +19,11 @@ Route::prefix('games')->group(function (){
   Route::get('findByGenre/{id}', [GameController::class, 'findByGenre']);
   Route::get('findByDevice/{id}', [GameController::class, 'findByDevice']);
   Route::get('findByRating/{value}', [GameController::class, 'findByRating']);
+});
+
+Route::prefix('devices')->group(function (){
+  Route::get('/', [DeviceController::class, 'index']);
+  Route::get('{id}', [DeviceController::class, 'show']);
 });
 
 Route::prefix('device-instances')->group(function (){

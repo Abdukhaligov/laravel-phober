@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Device;
+namespace App\Http\Resources\Device\Instance;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
