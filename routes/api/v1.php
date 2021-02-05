@@ -31,18 +31,18 @@ Route::prefix('device-instances')->group(function (){
 
 Route::middleware('auth:api')->group(function (){
   Route::get('user', [AuthController::class, 'user']);
-});
 
-Route::prefix('crm')->group(function (){
-  Route::prefix('customers')->group(function (){
-    Route::get('/', [CustomerController::class, 'index']);
-    Route::get('findBy/id/{id}', [CustomerController::class, 'show']);
-    Route::get('findBy/loyaltyCard/number/{number}', [CustomerController::class, 'findByLoyaltyCardNumber']);
-    Route::get('findBy/loyaltyCard/id/{id}', [CustomerController::class, 'findByLoyaltyCardId']);
-  });
+  Route::prefix('crm')->group(function (){
+    Route::prefix('customers')->group(function (){
+      Route::get('/', [CustomerController::class, 'index']);
+      Route::get('findBy/id/{id}', [CustomerController::class, 'show']);
+      Route::get('findBy/loyaltyCard/number/{number}', [CustomerController::class, 'findByLoyaltyCardNumber']);
+      Route::get('findBy/loyaltyCard/id/{id}', [CustomerController::class, 'findByLoyaltyCardId']);
+    });
 
-  Route::prefix('loyalty-cards')->group(function (){
-    Route::get('/', [LoyaltyCardController::class, 'index']);
-    Route::get('findBy/id/{id}', [LoyaltyCardController::class, 'show']);
+    Route::prefix('loyalty-cards')->group(function (){
+      Route::get('/', [LoyaltyCardController::class, 'index']);
+      Route::get('findBy/id/{id}', [LoyaltyCardController::class, 'show']);
+    });
   });
 });
