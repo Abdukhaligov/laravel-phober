@@ -3,14 +3,14 @@
 use App\Http\Controllers\Api\V1\DeviceController;
 use App\Http\Controllers\Api\V1\DeviceInstanceController;
 use App\Http\Controllers\Api\V1\GameController;
-use App\Http\Controllers\Api\V1\UserController;
+use App\Http\Controllers\Api\V1\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('login', [UserController::class, 'login']);
-Route::post('register', [UserController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
 
 Route::middleware('auth:api')->group(function (){
-  Route::get('user', [UserController::class, 'user']);
+  Route::get('user', [AuthController::class, 'user']);
 });
 
 Route::prefix('games')->group(function (){
