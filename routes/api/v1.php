@@ -13,20 +13,20 @@ Route::post('register', [AuthController::class, 'register']);
 
 Route::prefix('games')->group(function (){
   Route::get('/', [GameController::class, 'index']);
-  Route::get('findById/{id}', [GameController::class, 'show']);
-  Route::get('findByGenre/{id}', [GameController::class, 'findByGenre']);
-  Route::get('findByDevice/{id}', [GameController::class, 'findByDevice']);
-  Route::get('findByRating/{value}', [GameController::class, 'findByRating']);
+  Route::get('findBy/id/{id}', [GameController::class, 'show']);
+  Route::get('findBy/genre/id/{id}', [GameController::class, 'findByGenre']);
+  Route::get('findBy/device/id/{id}', [GameController::class, 'findByDevice']);
+  Route::get('findBy/rating/{value}', [GameController::class, 'findByRating']);
 });
 
 Route::prefix('devices')->group(function (){
   Route::get('/', [DeviceController::class, 'index']);
-  Route::get('findById/{id}', [DeviceController::class, 'show']);
+  Route::get('findBy/id/{id}', [DeviceController::class, 'show']);
 });
 
 Route::prefix('device-instances')->group(function (){
   Route::get('/', [DeviceInstanceController::class, 'index']);
-  Route::get('findById/{id}', [DeviceInstanceController::class, 'show']);
+  Route::get('findBy/id/{id}', [DeviceInstanceController::class, 'show']);
 });
 
 Route::middleware('auth:api')->group(function (){
@@ -36,11 +36,13 @@ Route::middleware('auth:api')->group(function (){
 Route::prefix('crm')->group(function (){
   Route::prefix('customers')->group(function (){
     Route::get('/', [CustomerController::class, 'index']);
-    Route::get('findById/{id}', [CustomerController::class, 'show']);
+    Route::get('findBy/id/{id}', [CustomerController::class, 'show']);
+    Route::get('findBy/loyaltyCard/number/{number}', [CustomerController::class, 'findByLoyaltyCardNumber']);
+    Route::get('findBy/loyaltyCard/id/{id}', [CustomerController::class, 'findByLoyaltyCardId']);
   });
 
   Route::prefix('loyalty-cards')->group(function (){
     Route::get('/', [LoyaltyCardController::class, 'index']);
-    Route::get('findById/{id}', [LoyaltyCardController::class, 'show']);
+    Route::get('findBy/id/{id}', [LoyaltyCardController::class, 'show']);
   });
 });

@@ -31,7 +31,7 @@ class DeviceController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/devices/findById/{id}",
+   *   path="/devices/findBy/id/{id}",
    *   summary="Get device by id",
    *   operationId="devicesShow",
    *   tags={"Devices"},

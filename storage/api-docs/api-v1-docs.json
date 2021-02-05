@@ -243,7 +243,7 @@
                 ]
             }
         },
-        "/crm/customers/findById/{id}": {
+        "/crm/customers/findBy/id/{id}": {
             "get": {
                 "tags": [
                     "CRM"
@@ -253,6 +253,64 @@
                 "parameters": [
                     {
                         "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/crm/customers/findBy/loyaltyCard/id/{id}": {
+            "get": {
+                "tags": [
+                    "CRM"
+                ],
+                "summary": "Find Customer by loyalty cart id",
+                "operationId": "customersfindByLoyaltyCardId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/crm/customers/findBy/loyaltyCard/number/{number}": {
+            "get": {
+                "tags": [
+                    "CRM"
+                ],
+                "summary": "Find Customer by loyalty cart number",
+                "operationId": "customersfindByLoyaltyCardNumber",
+                "parameters": [
+                    {
+                        "name": "number",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -291,7 +349,7 @@
                 ]
             }
         },
-        "/crm/loyalty-cards/findById/{id}": {
+        "/crm/loyalty-cards/findBy/id/{id}": {
             "get": {
                 "tags": [
                     "CRM"
@@ -335,7 +393,7 @@
                 "security": []
             }
         },
-        "/devices/findById/{id}": {
+        "/devices/findBy/id/{id}": {
             "get": {
                 "tags": [
                     "Devices"
@@ -375,7 +433,7 @@
                 "security": []
             }
         },
-        "/device-instances/findById/{id}": {
+        "/device-instances/findBy/id/{id}": {
             "get": {
                 "tags": [
                     "Device Instances"
@@ -415,7 +473,7 @@
                 "security": []
             }
         },
-        "/games/findById/{id}": {
+        "/games/findBy/id/{id}": {
             "get": {
                 "tags": [
                     "Games"
@@ -440,7 +498,7 @@
                 "security": []
             }
         },
-        "/games/findByGenre/{id}": {
+        "/games/findBy/genre/id/{id}": {
             "get": {
                 "tags": [
                     "Games"
@@ -465,7 +523,7 @@
                 "security": []
             }
         },
-        "/games/findByDevice/{id}": {
+        "/games/findBy/device/id/{id}": {
             "get": {
                 "tags": [
                     "Games"
@@ -490,7 +548,7 @@
                 "security": []
             }
         },
-        "/games/findByRating/{rating}": {
+        "/games/findBy/rating/{value}": {
             "get": {
                 "tags": [
                     "Games"
@@ -499,7 +557,7 @@
                 "operationId": "gamesFindByRating",
                 "parameters": [
                     {
-                        "name": "rating",
+                        "name": "value",
                         "in": "path",
                         "required": true,
                         "schema": {
