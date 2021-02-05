@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Resources\CRM\CustomerResource;
-use App\Http\Resources\CRM\CustomerResourceCollection;
-use App\Models\Customer;
+use App\Http\Resources\CRM\LoyaltyCardMinimalResource;
+use App\Http\Resources\CRM\LoyaltyCardMinimalResourceCollection;
+use App\Http\Resources\CRM\LoyaltyCardResource;
+use App\Models\Cards\LoyaltyCard;
 use Illuminate\Http\JsonResponse;
 
-class CustomerController extends Controller{
+class LoyaltyCardController extends Controller{
   /**
    * @OA\Get(
-   *   path="/customers",
-   *   summary="Get all customers",
-   *   operationId="customersIndex",
+   *   path="/loyalty-cards",
+   *   summary="Get all loyalty cards",
+   *   operationId="loyaltyCardsIndex",
    *   tags={"CRM"},
    *   security={{"bearer_token": {}}},
    *   @OA\Response(
@@ -24,16 +26,16 @@ class CustomerController extends Controller{
    * @return JsonResponse
    */
   public function index(){
-    $games = (new CustomerResourceCollection(Customer::all()))->resolve();
+    $games = (new LoyaltyCardMinimalResourceCollection(LoyaltyCard::all()))->resolve();
 
     return self::responseSuccess($games);
   }
 
   /**
    * @OA\Get(
-   *   path="/customers/{id}",
-   *   summary="Get customer by id",
-   *   operationId="customersShow",
+   *   path="/loyalty-cards/{id}",
+   *   summary="Get loyalty card by id",
+   *   operationId="loyaltyCardsShow",
    *   tags={"CRM"},
    *   security={{"bearer_token": {}}},
    *   @OA\Parameter(
@@ -54,10 +56,10 @@ class CustomerController extends Controller{
    * @return JsonResponse
    */
   public function show($id){
-    $device = Customer::find($id);
+    $loyaltyCard = LoyaltyCard::find($id);
 
-    return $device
-      ? self::responseSuccess(new CustomerResource($device))
+    return $loyaltyCard
+      ? self::responseSuccess(new LoyaltyCardResource($loyaltyCard))
       : self::responseNotFound('Game');
   }
 }

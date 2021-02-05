@@ -227,7 +227,7 @@
         "/customers": {
             "get": {
                 "tags": [
-                    "Customers"
+                    "CRM"
                 ],
                 "summary": "Get all customers",
                 "operationId": "customersIndex",
@@ -246,7 +246,7 @@
         "/customers/{id}": {
             "get": {
                 "tags": [
-                    "Customers"
+                    "CRM"
                 ],
                 "summary": "Get customer by id",
                 "operationId": "customersShow",
@@ -465,6 +465,54 @@
                     }
                 },
                 "security": []
+            }
+        },
+        "/loyalty-cards": {
+            "get": {
+                "tags": [
+                    "CRM"
+                ],
+                "summary": "Get all loyalty cards",
+                "operationId": "loyaltyCardsIndex",
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/loyalty-cards/{id}": {
+            "get": {
+                "tags": [
+                    "CRM"
+                ],
+                "summary": "Get loyalty card by id",
+                "operationId": "loyaltyCardsShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         }
     },

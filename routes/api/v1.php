@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\V1\DeviceController;
 use App\Http\Controllers\Api\V1\DeviceInstanceController;
 use App\Http\Controllers\Api\V1\GameController;
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\LoyaltyCardController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('login', [AuthController::class, 'login']);
@@ -31,8 +32,15 @@ Route::prefix('device-instances')->group(function (){
 Route::middleware('auth:api')->group(function (){
   Route::get('user', [AuthController::class, 'user']);
 
-  Route::prefix('customers')->group(function (){
-    Route::get('/', [CustomerController::class, 'index']);
-    Route::get('{id}', [CustomerController::class, 'show']);
-  });
+
+});
+
+Route::prefix('customers')->group(function (){
+  Route::get('/', [CustomerController::class, 'index']);
+  Route::get('{id}', [CustomerController::class, 'show']);
+});
+
+Route::prefix('loyalty-cards')->group(function (){
+  Route::get('/', [LoyaltyCardController::class, 'index']);
+  Route::get('{id}', [LoyaltyCardController::class, 'show']);
 });

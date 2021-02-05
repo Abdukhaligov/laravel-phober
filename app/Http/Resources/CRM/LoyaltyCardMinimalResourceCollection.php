@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Resources\Game;
+namespace App\Http\Resources\CRM;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class GameResourceCollection extends ResourceCollection{
+class LoyaltyCardMinimalResourceCollection extends ResourceCollection{
   /**
    * Transform the resource collection into an array.
    *
@@ -14,6 +14,6 @@ class GameResourceCollection extends ResourceCollection{
    * @return AnonymousResourceCollection
    */
   public function toArray($request){
-    return GameResource::collection($this->collection);
+    return LoyaltyCardMinimalResource::collection($this->collection);
   }
 }

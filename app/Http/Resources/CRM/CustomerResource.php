@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\CRM;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
