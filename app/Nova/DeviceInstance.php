@@ -20,7 +20,7 @@ class DeviceInstance extends Resource{
 
   public function title(){
     /** @var \App\Models\DeviceInstance $this */
-    return $this->id. " ".$this->device->name;
+    return $this->device->name. " ".$this->order." (#".$this->id.")";
   }
 
   public function fields(Request $request){

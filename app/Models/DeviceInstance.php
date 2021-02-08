@@ -15,6 +15,7 @@ use KirschbaumDevelopment\NovaComments\Commentable;
  * @property Carbon deactivation_start
  * @property Carbon deactivation_end
  * @property integer device_id
+ * @property int order
  */
 class DeviceInstance extends Model{
   use ModelTrait, HasFactory, Commentable;
@@ -26,7 +27,7 @@ class DeviceInstance extends Model{
     'deactivation_start' => 'datetime',
     'deactivation_end' => 'datetime',
   ];
-  protected $fillable = ["device_id"];
+  protected $fillable = ["device_id", "order"];
   protected $with = ["device"];
 
   public function device(){

@@ -15,6 +15,7 @@ use Spatie\Translatable\HasTranslations;
  * @property string description
  * @property Collection games
  * @property array comments
+ * @property Collection $instances
  */
 class Device extends Model{
   use ModelTrait, HasTranslations, Commentable;
@@ -24,5 +25,18 @@ class Device extends Model{
 
   public function games(){
     return $this->belongsToMany(Game::class, "game_device");
+  }
+
+  public function instances(){
+    return $this->hasMany(DeviceInstance::class);
+  }
+
+  public function getNextOrderVal(){
+    /** @var DeviceInstance $instance */
+    if($instance = $this->instances()->orderBy('order', 'DESC')->get()->first()){
+      return $instance->order + 1;
+    }
+
+    return 1;
   }
 }
