@@ -32,7 +32,7 @@ class LoyaltyCardController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/crm/loyalty-cards/findBy/id/{id}",
+   *   path="/crm/loyalty-cards/findById/{id}",
    *   summary="Get loyalty card by id",
    *   operationId="loyaltyCardsShow",
    *   tags={"CRM"},

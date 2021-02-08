@@ -20,7 +20,7 @@
         }
     ],
     "paths": {
-        "/login": {
+        "/auth/login": {
             "post": {
                 "tags": [
                     "Auth"
@@ -105,7 +105,7 @@
                 "security": []
             }
         },
-        "/register": {
+        "/auth/register": {
             "post": {
                 "tags": [
                     "Auth"
@@ -188,7 +188,7 @@
                 "security": []
             }
         },
-        "/user": {
+        "/auth/user": {
             "get": {
                 "tags": [
                     "Auth"
@@ -243,7 +243,7 @@
                 ]
             }
         },
-        "/crm/customers/findBy/id/{id}": {
+        "/crm/customers/findById/{id}": {
             "get": {
                 "tags": [
                     "CRM"
@@ -272,7 +272,7 @@
                 ]
             }
         },
-        "/crm/customers/findBy/loyaltyCard/id/{id}": {
+        "/crm/customers/findByLoyaltyCardId/{id}": {
             "get": {
                 "tags": [
                     "CRM"
@@ -301,7 +301,7 @@
                 ]
             }
         },
-        "/crm/customers/findBy/loyaltyCard/number/{number}": {
+        "/crm/customers/findByLoyaltyCardNumber/{number}": {
             "get": {
                 "tags": [
                     "CRM"
@@ -349,7 +349,7 @@
                 ]
             }
         },
-        "/crm/loyalty-cards/findBy/id/{id}": {
+        "/crm/loyalty-cards/findById/{id}": {
             "get": {
                 "tags": [
                     "CRM"
@@ -393,7 +393,7 @@
                 "security": []
             }
         },
-        "/devices/findBy/id/{id}": {
+        "/devices/findById/{id}": {
             "get": {
                 "tags": [
                     "Devices"
@@ -433,7 +433,7 @@
                 "security": []
             }
         },
-        "/device-instances/findBy/id/{id}": {
+        "/device-instances/findById/{id}": {
             "get": {
                 "tags": [
                     "Device Instances"
@@ -473,7 +473,7 @@
                 "security": []
             }
         },
-        "/games/findBy/id/{id}": {
+        "/games/findById/{id}": {
             "get": {
                 "tags": [
                     "Games"
@@ -498,7 +498,7 @@
                 "security": []
             }
         },
-        "/games/findBy/genre/id/{id}": {
+        "/games/findByGenreId/{id}": {
             "get": {
                 "tags": [
                     "Games"
@@ -523,7 +523,7 @@
                 "security": []
             }
         },
-        "/games/findBy/device/id/{id}": {
+        "/games/findByDeviceId/{id}": {
             "get": {
                 "tags": [
                     "Games"
@@ -548,7 +548,7 @@
                 "security": []
             }
         },
-        "/games/findBy/rating/{value}": {
+        "/games/findByRating/{value}": {
             "get": {
                 "tags": [
                     "Games"

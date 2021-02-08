@@ -37,14 +37,14 @@ class RouteServiceProvider extends ServiceProvider{
    * @return void
    */
   protected function mapApiRoutes(){
-    Route::prefix('api')->middleware(['forceJson', 'api'])->group(function (){
+    Route::prefix('api')->name('api.')->middleware(['forceJson', 'api'])->group(function (){
       Route::get('/', function (){
         return response()->json([
           "info" => config('api.info'), "version" => config('api.version')
         ]);
-      });
+      })->name('info');
 
-      Route::prefix('v1')->group(base_path('routes/api/v1.php'));
+      Route::prefix('v1')->name('v1.')->group(base_path('routes/api/v1.php'));
     });
   }
 

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller{
   /**
    * @OA\Post(
-   *   path="/login",
+   *   path="/auth/login",
    *   summary="Sign in",
    *   operationId="authLogin",
    *   tags={"Auth"},
@@ -93,7 +93,7 @@ class AuthController extends Controller{
 
   /**
    * @OA\Post(
-   *   path="/register",
+   *   path="/auth/register",
    *   summary="Sign up",
    *   operationId="authRegister",
    *   tags={"Auth"},
@@ -156,7 +156,7 @@ class AuthController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/user",
+   *   path="/auth/user",
    *   summary="Get Auth info",
    *   operationId="authUser",
    *   tags={"Auth"},

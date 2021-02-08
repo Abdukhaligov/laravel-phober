@@ -31,7 +31,7 @@ class DeviceInstanceController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/device-instances/findBy/id/{id}",
+   *   path="/device-instances/findById/{id}",
    *   summary="Get device instance by id",
    *   operationId="deviceInstancesShow",
    *   tags={"Device Instances"},

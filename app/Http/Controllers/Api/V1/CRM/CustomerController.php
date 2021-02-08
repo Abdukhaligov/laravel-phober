@@ -33,7 +33,7 @@ class CustomerController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/crm/customers/findBy/id/{id}",
+   *   path="/crm/customers/findById/{id}",
    *   summary="Get customer by id",
    *   operationId="customersShow",
    *   tags={"CRM"},
@@ -65,7 +65,7 @@ class CustomerController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/crm/customers/findBy/loyaltyCard/id/{id}",
+   *   path="/crm/customers/findByLoyaltyCardId/{id}",
    *   summary="Find Customer by loyalty cart id",
    *   operationId="customersfindByLoyaltyCardId",
    *   tags={"CRM"},
@@ -100,7 +100,7 @@ class CustomerController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/crm/customers/findBy/loyaltyCard/number/{number}",
+   *   path="/crm/customers/findByLoyaltyCardNumber/{number}",
    *   summary="Find Customer by loyalty cart number",
    *   operationId="customersfindByLoyaltyCardNumber",
    *   tags={"CRM"},

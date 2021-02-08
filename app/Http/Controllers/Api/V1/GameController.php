@@ -33,7 +33,7 @@ class GameController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/games/findBy/id/{id}",
+   *   path="/games/findById/{id}",
    *   summary="Get game by id",
    *   operationId="gamesShow",
    *   tags={"Games"},
@@ -65,7 +65,7 @@ class GameController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/games/findBy/genre/id/{id}",
+   *   path="/games/findByGenreId/{id}",
    *   summary="Find games by genre id",
    *   operationId="gamesFindByGenre",
    *   tags={"Games"},
@@ -100,7 +100,7 @@ class GameController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/games/findBy/device/id/{id}",
+   *   path="/games/findByDeviceId/{id}",
    *   summary="Find games by device id",
    *   operationId="gamesFindByDevice",
    *   tags={"Games"},
@@ -135,7 +135,7 @@ class GameController extends Controller{
 
   /**
    * @OA\Get(
-   *   path="/games/findBy/rating/{value}",
+   *   path="/games/findByRating/{value}",
    *   summary="Find games by rating",
    *   operationId="gamesFindByRating",
    *   tags={"Games"},
