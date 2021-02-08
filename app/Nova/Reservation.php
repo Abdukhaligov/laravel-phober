@@ -21,7 +21,8 @@ class Reservation extends Resource{
 
   public function fields(Request $request){
     return [
-      ID::make(__('ID'), 'id')->sortable(),
+      ID::make(__('ID'), 'id')
+        ->sortable(),
 
       Text::make('Full name', 'full_name'),
 
@@ -33,7 +34,8 @@ class Reservation extends Resource{
 
       Text::make('Players age', 'players_age'),
 
-      Text::make('Note')->onlyOnDetail(),
+      Text::make('Note')
+        ->onlyOnDetail(),
 
       BelongsTo::make('Type', 'type', ReservationType::class),
 
