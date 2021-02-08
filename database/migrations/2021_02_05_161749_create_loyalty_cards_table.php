@@ -14,10 +14,9 @@ class CreateLoyaltyCardsTable extends Migration{
     Schema::create('loyalty_cards', function (Blueprint $table){
       $table->id();
       $table->integer('number');
-      $table->bigInteger('owner_id')->unsigned()->nullable();
+      $table->unsignedBigInteger('owner_id')->nullable();
       $table->foreign('owner_id')->references('id')->on('customers')->onDelete('SET NULL');
-
-      $table->bigInteger('author_id')->unsigned()->nullable();
+      $table->unsignedBigInteger('author_id')->nullable();
       $table->foreign('author_id')->references('id')->on('users')->onDelete('SET NULL');
       $table->timestamps();
     });

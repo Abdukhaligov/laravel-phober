@@ -10,7 +10,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 class ReservationType extends Resource{
   public static $model = \App\Models\ReservationType::class;
   public static $title = 'name';
-  public static $group = "Reservations";
+  public static $group = "CRM";
   public static $search = [
     'id', 'name'
   ];

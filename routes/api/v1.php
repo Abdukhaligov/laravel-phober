@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\CRM\CustomerController;
 use App\Http\Controllers\Api\V1\CRM\LoyaltyCardController;
+use App\Http\Controllers\Api\V1\CRM\ReservationController;
 use App\Http\Controllers\Api\V1\DeviceController;
 use App\Http\Controllers\Api\V1\DeviceInstanceController;
 use App\Http\Controllers\Api\V1\GameController;
@@ -45,6 +46,11 @@ Route::middleware('auth:api')->group(function (){
     Route::prefix('loyalty-cards')->name('loyalty-cards.')->group(function (){
       Route::get('/', [LoyaltyCardController::class, 'index'])->name('index');
       Route::get('findById/{id}', [LoyaltyCardController::class, 'show'])->name('show');
+    });
+
+    Route::prefix('reservations')->name('reservations.')->group(function (){
+      Route::get('/', [ReservationController::class, 'index'])->name('index');
+      Route::get('findById/{id}', [ReservationController::class, 'show'])->name('show');
     });
   });
 });

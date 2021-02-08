@@ -47,8 +47,9 @@ class Customer extends Resource{
 
       Date::make("Birthday"),
 
-      BelongsTo::make('Author', 'author', User::class)
-        ->onlyOnDetail(),
+      BelongsTo::make('Created By', 'author', User::class)
+        ->hideWhenCreating()
+        ->hideWhenUpdating(),
 
       new Commenter(),
     ];

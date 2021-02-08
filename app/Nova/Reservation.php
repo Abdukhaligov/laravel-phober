@@ -14,7 +14,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 class Reservation extends Resource{
   public static $model = \App\Models\Reservation::class;
   public static $title = 'id';
-  public static $group = "Reservations";
+  public static $group = "CRM";
   public static $search = [
     'id',
   ];
@@ -38,6 +38,10 @@ class Reservation extends Resource{
         ->onlyOnDetail(),
 
       BelongsTo::make('Type', 'type', ReservationType::class),
+
+      BelongsTo::make('Created By', 'author', User::class)
+        ->hideWhenCreating()
+        ->hideWhenUpdating(),
 
       BelongsToMany::make('Device Instance', 'deviceInstances', DeviceInstance::class)
     ];

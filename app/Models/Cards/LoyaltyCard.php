@@ -2,9 +2,9 @@
 
 namespace App\Models\Cards;
 
+use App\Models\Authorable;
 use App\Models\Customer;
 use App\Models\ModelTrait;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +16,7 @@ use KirschbaumDevelopment\NovaComments\Commentable;
  * @property array comments
  */
 class LoyaltyCard extends Model{
-  use ModelTrait, HasFactory, Commentable;
+  use Authorable, ModelTrait, HasFactory, Commentable;
 
   protected $fillable = ['number', 'owner_id'];
   protected $with = ["owner"];
@@ -26,9 +26,5 @@ class LoyaltyCard extends Model{
 
   public function owner(){
     return $this->belongsTo(Customer::class, "owner_id");
-  }
-
-  public function author(){
-    return $this->belongsTo(User::class, "author_id");
   }
 }

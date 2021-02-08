@@ -378,6 +378,54 @@
                 ]
             }
         },
+        "/crm/reservations": {
+            "get": {
+                "tags": [
+                    "CRM"
+                ],
+                "summary": "Get all reservations",
+                "operationId": "reservationsIndex",
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/crm/reservations/findById/{id}": {
+            "get": {
+                "tags": [
+                    "CRM"
+                ],
+                "summary": "Get reservation by id",
+                "operationId": "reservationsShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/devices": {
             "get": {
                 "tags": [

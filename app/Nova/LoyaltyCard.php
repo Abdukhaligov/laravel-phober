@@ -27,6 +27,10 @@ class LoyaltyCard extends Resource{
 
       BelongsTo::make('Owner', 'owner', Customer::class),
 
+      BelongsTo::make('Created By', 'author', User::class)
+        ->hideWhenCreating()
+        ->hideWhenUpdating(),
+
       new Commenter(),
     ];
   }

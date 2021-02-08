@@ -15,11 +15,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property bool gender
  * @property DateTime birthday
  * @property User author
- * @property int author_id
  * @method destroyer()
  */
 class Customer extends Model{
-  use ModelTrait, HasFactory;
+  use Authorable, ModelTrait, HasFactory;
 
   protected $fillable = [
     'name', 'surname', 'email', 'gender', 'birthday', 'phone'
@@ -27,10 +26,6 @@ class Customer extends Model{
   protected $casts = [
     "birthday" => "date"
   ];
-
-  public function author(){
-    return $this->belongsTo(User::class, "author_id");
-  }
 
   public function getAge(): int|bool{
     if (!$this->birthday) return false;

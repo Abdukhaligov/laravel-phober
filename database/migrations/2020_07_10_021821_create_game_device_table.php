@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Schema;
 class CreateGameDeviceTable extends Migration{
   public function up(){
     Schema::create('game_device', function (Blueprint $table){
-      $table->bigInteger("game_id")->unsigned();
+      $table->unsignedBigInteger("game_id");
       $table->foreign("game_id")->references("id")->on("games")->onDelete("CASCADE");
-      $table->bigInteger("device_id")->unsigned();
+      $table->unsignedBigInteger("device_id");
       $table->foreign("device_id")->references("id")->on("devices")->onDelete("CASCADE");
     });
   }
