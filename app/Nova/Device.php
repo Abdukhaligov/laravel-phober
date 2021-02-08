@@ -20,13 +20,14 @@ class Device extends Resource{
 
   public function fields(Request $request){
     return [
-      ID::make()->sortable(),
+      ID::make(__('ID'), 'id')
+        ->sortable(),
 
-      Text::make("Name")->sortable(),
+      Text::make("Name")
+        ->sortable(),
 
-      NovaTabTranslatable::make([
-        Textarea::make(__('Description'), 'description')
-      ])->hideFromIndex(),
+      NovaTabTranslatable::make([Textarea::make(__('Description'), 'description')])
+        ->hideFromIndex(),
 
       BelongsToMany::make("Games"),
 

@@ -3,17 +3,16 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Genre extends Resource{
-  public static $model = \App\Models\Genre::class;
+class ReservationType extends Resource{
+  public static $model = \App\Models\ReservationType::class;
   public static $title = 'name';
-  public static $group = "Games & Devices";
+  public static $group = "Reservations";
   public static $search = [
-    'id', 'name',
+    'id', 'name'
   ];
 
   public function fields(Request $request){
@@ -21,9 +20,8 @@ class Genre extends Resource{
       ID::make(__('ID'), 'id')
         ->sortable(),
 
-      Text::make("Name"),
-
-      BelongsToMany::make("Games")
+      Text::make("Name")
+        ->sortable(),
     ];
   }
 }

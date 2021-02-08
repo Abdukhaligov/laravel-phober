@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 use KirschbaumDevelopment\NovaComments\Commentable;
 
 /**
- * @property Collection device
+ * @property Device device
  * @property bool active
  * @property Carbon deactivation_start
  * @property Carbon deactivation_end

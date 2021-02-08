@@ -26,13 +26,16 @@ class Game extends Resource{
 
   public function fields(Request $request){
     return [
-      ID::make()->sortable(),
+      ID::make(__('ID'), 'id')
+        ->sortable(),
 
       Media::make('Preview', 'preview'),
 
-      Text::make("Name")->sortable(),
+      Text::make("Name")
+        ->sortable(),
 
-      Text::make("Slug")->sortable(),
+      Text::make("Slug")
+        ->sortable(),
 
       Youtube::make('Video'),
 
@@ -44,9 +47,8 @@ class Game extends Resource{
 
       Boolean::make("Multiplayer"),
 
-      NovaTabTranslatable::make([
-        Textarea::make(__('Description'), 'description')
-      ])->hideFromIndex(),
+      NovaTabTranslatable::make([Textarea::make(__('Description'), 'description')])
+        ->hideFromIndex(),
 
       BelongsToMany::make("Devices"),
 

@@ -18,6 +18,11 @@ class DeviceInstance extends Resource{
     'id'
   ];
 
+  public function title(){
+    /** @var \App\Models\DeviceInstance $this */
+    return $this->id. " ".$this->device->name;
+  }
+
   public function fields(Request $request){
     return [
       ID::make(__('ID'), 'id')
